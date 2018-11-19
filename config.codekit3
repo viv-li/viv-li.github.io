@@ -123,16 +123,6 @@
 		"oS": 0,
 		"uL": 1
 		},
-	"/public/css/main-min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "/public/css/main-min-min.css",
-		"oF": 0,
-		"oS": 3
-		},
 	"/public/css/main.css": {
 		"aP": 1,
 		"bl": 0,
@@ -151,7 +141,7 @@
 		"oF": 0
 		},
 	"/public/css/main.scss": {
-		"aP": 0,
+		"aP": 1,
 		"bl": 0,
 		"dP": 10,
 		"dS": 0,
@@ -228,47 +218,6 @@
 		"oIPL": 0,
 		"opt": 1,
 		"q": 100
-		},
-	"/public/images/water-image.png": {
-		"ft": 32768,
-		"iS": 3744,
-		"oA": 0,
-		"oAP": "/public/images/water-image.png",
-		"oF": 0,
-		"oIPL": 1,
-		"opt": 1,
-		"oT": 1,
-		"q": 100
-		},
-	"/public/js/canvas-ripple-min.js": {
-		"ft": 64,
-		"ma": 0,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "/public/js/canvas-ripple-min-min.js",
-		"oF": 0,
-		"sC": 3,
-		"tS": 0
-		},
-	"/public/js/canvas-ripple.js": {
-		"ft": 64,
-		"ma": 0,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "/public/js/canvas-ripple-min.js",
-		"oF": 0,
-		"sC": 3,
-		"tS": 0
-		},
-	"/public/js/main-min.js": {
-		"ft": 64,
-		"ma": 0,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "/public/js/main-min-min.js",
-		"oF": 0,
-		"sC": 3,
-		"tS": 0
 		},
 	"/public/js/main.js": {
 		"ft": 64,
