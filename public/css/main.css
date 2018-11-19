@@ -135,23 +135,25 @@ h2 {
     background-image: linear-gradient(to top, #0556E6 49.9%, transparent 50%);
     background-position: bottom;
     transition: background-position 300ms, color 300ms ease; }
-  .filter:after {
-    content: '';
-    display: inline-block;
-    width: 0;
-    height: 5px;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    background: #0556E6;
-    transition: width 300ms; }
-  .filter:hover {
-    cursor: pointer; }
-    .filter:hover:after {
-      width: 100%;
-      transition: width 300ms; }
   .filter:focus, .filter:active {
     outline: none; }
+
+body.not-touch .filter:after {
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 5px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: #0556E6;
+  transition: width 300ms; }
+
+body.not-touch .filter:hover {
+  cursor: pointer; }
+  body.not-touch .filter:hover:after {
+    width: 100%;
+    transition: width 300ms; }
 
 .justify-row {
   display: inline-block;
@@ -260,9 +262,11 @@ h2 {
           color: white;
           background-position: bottom;
           transition: background-position 150ms; }
-  .mix:hover .overlay {
-    top: 24px;
-    transition: top 300ms ease; }
+
+body.not-touch .mix:hover .overlay,
+.mix.odd-touch .overlay {
+  top: 24px;
+  transition: top 300ms ease; }
 
 /** Loading animation */
 .mix {

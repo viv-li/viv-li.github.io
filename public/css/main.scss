@@ -7,6 +7,7 @@ $interface-red: #FF635B;
 $interface-yellow: #FFBD2E;
 $interface-green: #29CE42;
 $footer-height: 100px;
+$bar-height: 24px;
 
 
 * { box-sizing: border-box }
@@ -151,6 +152,12 @@ h2 {
 		@include transition(background-position 300ms, color 300ms ease);
 	}
 
+	&:focus, &:active {
+		outline: none;
+	}
+}
+
+body.not-touch .filter {
 	&:after {
 		content: '';
 		display: inline-block;
@@ -169,10 +176,6 @@ h2 {
 			width: 100%;
 			@include transition(width 300ms);
 		}
-	}
-
-	&:focus, &:active {
-		outline: none;
 	}
 }
 
@@ -207,8 +210,6 @@ h2 {
   margin-bottom: 1rem;
   overflow: hidden;
   position: relative;
-
-  $bar-height: 24px;
 
 	.bar {
 		background-color: $interface-gray;
@@ -302,12 +303,13 @@ h2 {
 			}
 		}
 	}
+}
 
-	&:hover {
-		.overlay {
-			top: $bar-height;
-			@include transition(top 300ms ease)
-		}
+body.not-touch .mix:hover,
+.mix.odd-touch {
+	.overlay {
+		top: $bar-height;
+		@include transition(top 300ms ease)
 	}
 }
 
