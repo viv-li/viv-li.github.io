@@ -55,8 +55,8 @@ h1 {
     display: inline-block;
     vertical-align: top;
     overflow: hidden;
-    -webkit-animation: typing 4s steps(9, end);
-    animation: typing 4s steps(9, end); }
+    -webkit-animation: typing 3s steps(9, end);
+    animation: typing 3s steps(9, end); }
   h1 .cursor {
     -webkit-animation: blink 1s steps(1) infinite;
     animation: blink 1s steps(1) infinite; }
@@ -65,7 +65,7 @@ h1 {
 @-webkit-keyframes typing {
   from {
     width: 0; }
-  50% {
+  60% {
     width: 0; }
   to {
     width: 4.5em; } }
@@ -73,7 +73,7 @@ h1 {
 @keyframes typing {
   from {
     width: 0; }
-  50% {
+  60% {
     width: 0; }
   to {
     width: 4.5em; } }

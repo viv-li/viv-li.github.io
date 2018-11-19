@@ -71,7 +71,7 @@ h1 {
 	.typing {
 		display: inline-block;
 		vertical-align: top;		overflow: hidden; // Ensures the content is not revealed until the animation
-		@include animation(typing 4s steps(9, end));
+		@include animation(typing 3s steps(9, end));
 	}
 
 	.cursor {
@@ -82,7 +82,7 @@ h1 {
 /* The typing effect */
 @include keyframes(typing) {
 	from { width: 0 }
-  50% { width: 0 }
+  60% { width: 0 }
   to { width: 4.5em }
 }
 
