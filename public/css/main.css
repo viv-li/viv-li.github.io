@@ -1,6 +1,12 @@
 * {
   box-sizing: border-box; }
 
+.js-loading *,
+.js-loading *:before,
+.js-loading *:after {
+  -webkit-animation-play-state: paused !important;
+          animation-play-state: paused !important; }
+
 html {
   scroll-behavior: smooth; }
 
@@ -49,21 +55,21 @@ h1 {
     display: inline-block;
     vertical-align: top;
     overflow: hidden;
-    -webkit-animation: typing 1.5s steps(9, end);
-    animation: typing 1.5s steps(9, end); }
+    -webkit-animation: typing 4s steps(9, end);
+    animation: typing 4s steps(9, end); }
   h1 .cursor {
     -webkit-animation: blink 1s steps(1) infinite;
     animation: blink 1s steps(1) infinite; }
 
 /* The typing effect */
 @-webkit-keyframes typing {
-  from {
+  50% {
     width: 0; }
   to {
     width: 4.5em; } }
 
 @keyframes typing {
-  from {
+  50% {
     width: 0; }
   to {
     width: 4.5em; } }

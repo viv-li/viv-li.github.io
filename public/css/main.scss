@@ -12,6 +12,12 @@ $bar-height: 24px;
 
 * { box-sizing: border-box }
 
+.js-loading *,
+.js-loading *:before,
+.js-loading *:after {
+  animation-play-state: paused !important;
+}
+
 html {
 	scroll-behavior: smooth;
 }
@@ -61,11 +67,11 @@ h1 {
 	font-family: "Inconsolata", monospace;
 	white-space: nowrap; // Keeps the content on a single line
 
+
 	.typing {
 		display: inline-block;
-		vertical-align: top;
-		overflow: hidden; // Ensures the content is not revealed until the animation
-		@include animation(typing 1.5s steps(9, end));
+		vertical-align: top;		overflow: hidden; // Ensures the content is not revealed until the animation
+		@include animation(typing 4s steps(9, end));
 	}
 
 	.cursor {
@@ -75,7 +81,7 @@ h1 {
 
 /* The typing effect */
 @include keyframes(typing) {
-  from { width: 0 }
+  50% { width: 0  }
   to { width: 4.5em }
 }
 

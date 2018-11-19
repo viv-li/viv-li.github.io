@@ -1,3 +1,4 @@
+document.body.classList.add('js-loading');
 
 /* global mixitup */
 var elMixGrid = document.getElementById('portfolio-mix-grid');
@@ -27,6 +28,8 @@ mixer.show()
       }
     });
   });
+
+document.body.classList.remove('js-loading');
 
 /* Make filter scroll to top when they are clicked */
 document.querySelectorAll('.filter').forEach((function(filter) {
