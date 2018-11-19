@@ -1,0 +1,363 @@
+@import "mixins";
+
+$brand-primary: #0556E6;
+$text-color: #404040;
+$interface-gray: #EEEEEE;
+$interface-red: #FF635B;
+$interface-yellow: #FFBD2E;
+$interface-green: #29CE42;
+$footer-height: 100px;
+
+
+* { box-sizing: border-box }
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #404040;
+	overflow: auto;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+.content {
+	margin: 0 auto;
+	@include for-mobile-only {
+		max-width: 420px;
+		padding: 20px;
+	}
+	@include for-tablet-portrait-up {
+		max-width: 660px;
+	}
+	@include for-desktop-up {
+		max-width: 1000px;
+	}
+}
+
+/* Header
+---------------------------------------------------------------------- */
+h1 {
+	@include for-mobile-only {
+		font-size: 4em;
+	}
+	@include for-tablet-portrait-up {
+		font-size: 7em;
+	}
+	@include for-desktop-up {
+		font-size: 10em;
+	}
+
+	color: $brand-primary;
+	text-transform: lowercase;
+	margin-top: 0.2em;
+	margin-bottom: 0.4em;
+	font-weight: 400;
+	font-family: "Inconsolata", monospace;
+	white-space: nowrap; // Keeps the content on a single line
+
+	.typing {
+		display: inline-block;
+		vertical-align: top;
+		overflow: hidden; // Ensures the content is not revealed until the animation
+		@include animation(typing 1.5s steps(9, end));
+	}
+
+	.cursor {
+		@include animation(blink 1s steps(1) infinite);
+	}
+}
+
+/* The typing effect */
+@include keyframes(typing) {
+  from { width: 0 }
+  to { width: 4.5em }
+}
+
+@include keyframes(blink) {
+	from {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+h2 {
+	@include for-mobile-only {
+		font-size: 1.4em;
+	}
+	@include for-tablet-portrait-up {
+		font-size: 2.1em;
+	}
+	@include for-desktop-up {
+		font-size: 2.8em;
+	}
+
+	text-transform: lowercase;
+	font-weight: 200;
+	line-height: 1.5;
+	margin: 0;
+	margin-top: 1em;
+}
+
+
+
+/* Portfolio
+---------------------------------------------------------------------- */
+#portfolio {
+	padding: 1rem 0 2rem 0;
+}
+
+.filters {
+	margin-bottom: 1rem;
+	text-align: justify;
+}
+
+.filter {
+	@include for-mobile-only {
+		font-size: 0.9em;
+	}
+	@include for-tablet-portrait-up {
+		font-size: 1.1em;
+	}
+	@include for-desktop-up {
+		font-size: 1.4em;
+	}
+
+	display: inline-block;
+	font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	padding: 1rem;
+	background-color: none;
+	border: none;
+	position: relative;
+
+  @include for-mobile-only {
+  	width: 100%;
+		margin-bottom: 5px;
+  }
+
+	&.mixitup-control-active {
+		color: white;
+		background-size: 100% 200%;
+		background-image: linear-gradient(to top, $brand-primary 49.9%, transparent 50%);
+		background-position: bottom;
+		@include transition(background-position 300ms, color 300ms ease);
+	}
+
+	&:after {
+		content: '';
+		display: inline-block;
+		width: 0;
+		height: 5px;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		background: $brand-primary;
+		@include transition(width 300ms);
+	}
+
+	&:hover {
+		cursor: pointer;
+		&:after {
+			width: 100%;
+			@include transition(width 300ms);
+		}
+	}
+
+	&:focus, &:active {
+		outline: none;
+	}
+}
+
+.justify-row {
+	display: inline-block;
+	width: 100%;
+}
+
+/* Portfolio grid
+---------------------------------------------------------------------- */
+#portfolio-mix-grid {
+	text-align: justify;
+
+	@include for-tablet-portrait-up {
+		min-height: 662px;
+	}
+	@include for-desktop-up {
+		min-height: 461px;
+	}
+}
+
+.mix, .gap {
+	display: inline-block;
+  width: 320px;
+  @include for-mobile-only {
+  	width: 100%;
+  }
+}
+
+.mix {
+	vertical-align: top;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  position: relative;
+
+  $bar-height: 24px;
+
+	.bar {
+		background-color: $interface-gray;
+		height: $bar-height;
+		position: relative;
+		white-space: nowrap;
+		
+		h3 {
+			font-family: "Inconsolata", monospace;
+			line-height: $bar-height;
+			font-size: 0.9em;
+			margin: 0;
+			margin-left: 60px;
+		}
+
+		/** Interface dots */
+		i {
+			width: 12px;
+			height: 12px;
+			border-radius: 50%;
+			position: absolute;
+			top: 6px;
+			left: 6px;
+			background-color: $interface-red;
+
+			&:before, &:after {
+				content: '';
+				display: inline-block;
+				width: 12px;
+				height: 12px;
+				border-radius: 50%;
+				position: absolute;
+			}
+			&:before {
+				background-color: $interface-yellow;
+				left: 16px;
+			}
+			&:after {
+				background-color: $interface-green;
+				left: 32px;
+			}
+
+		}
+	}
+
+	img {
+		display: block;
+		width: 100%;
+		border: 1px solid $interface-gray;
+	}
+
+	.overlay {
+		width: 100%;
+		height: 100%;
+		background-color: rgba(5, 86, 230, 0.5);
+		color: white;
+		display: flex;
+		flex-direction: column;
+		position: absolute;
+		top: 100%;
+		@include transition(top 300ms ease)
+
+		ul {
+			list-style-type: none;
+			text-align: left;
+			line-height: 1.6;
+			padding: 0 1rem;
+
+			li {
+				display: inline-block;
+				font-family: "Inconsolata", monospace;
+				text-transform: uppercase;
+				background-color: $text-color;
+				padding: 0.25rem;
+				line-height: 0.9;
+				white-space: nowrap;
+			}
+		}
+
+		p {
+			margin-top: auto;
+			margin-bottom: 2*$bar-height;
+			text-align: center;
+			a {
+				color: $brand-primary;
+				background-color: $interface-gray;
+				text-decoration: none;
+				display: inline-block;
+				padding: 0.5rem 1rem;
+				@include button-hover($brand-primary, white);
+			}
+		}
+	}
+
+	&:hover {
+		.overlay {
+			top: $bar-height;
+			@include transition(top 300ms ease)
+		}
+	}
+}
+
+/** Loading animation */
+.mix {
+  visibility: hidden;
+}
+
+.mixitup-ready .mix {
+   visibility: visible;
+}
+
+
+/* Footer
+---------------------------------------------------------------------- */
+footer {
+	background-color: $text-color;
+	color: white;
+	margin-top: auto;
+	font-size: 0;
+
+	.social-link {
+		display: inline-block;
+		height: 100%;
+		color: white;
+		text-decoration: none;
+
+		i {
+			font-size: 2rem;
+			text-align: center;
+			width: 4rem;
+			height: 4rem;
+			padding: 1rem;
+			@include button-hover($brand-primary, white);
+		}
+	}
+
+	.copyright {
+		display: inline-block;
+		vertical-align: text-bottom;
+		font-size: 0.9rem;
+		margin-left: 1rem;
+	}
+
+	@include for-mobile-only {
+		text-align: center;
+		.copyright {
+			margin: 1rem 0;
+			display: block;
+		}
+	}
+}
