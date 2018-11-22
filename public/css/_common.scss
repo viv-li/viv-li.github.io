@@ -42,10 +42,13 @@ a {
 }
 
 .button {
+	font-size: 1rem;
 	font-weight: 400;
+	font-family: inherit;
 	text-decoration: none;
 	background-color: $text-color;
 	color: white;
+	border: none;
 	display: inline-block;
 	padding: 1em;
 	@include button-hover($brand-primary, white);
