@@ -232,13 +232,8 @@ h2 {
 			padding-bottom: $mix-bar-height;
 			text-align: center;
 			
-			a {
-				color: white;
-				background-color: $text-color;
-				text-decoration: none;
-				display: inline-block;
+			.button {
 				padding: 0.75rem;
-				@include button-hover($brand-primary, white);
 			}
 		}
 	}

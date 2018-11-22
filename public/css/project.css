@@ -35,6 +35,24 @@ a {
     color: #0556E6;
     transition: color 300ms; }
 
+.button {
+  font-weight: 400;
+  text-decoration: none;
+  background-color: #404040;
+  color: white;
+  display: inline-block;
+  padding: 1em;
+  background-image: linear-gradient(to top, #0556E6 49.9%, transparent 50%);
+  background-size: 100% 200%;
+  background-position: top;
+  transition: background-position 300ms; }
+  .button:hover {
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    background-position: bottom;
+    transition: background-position 300ms; }
+
 b, strong {
   font-weight: bolder; }
 
@@ -161,23 +179,6 @@ h1 {
 h2 {
   font-weight: normal;
   font-size: 1.4em; }
-
-.button {
-  text-decoration: none;
-  background-color: #404040;
-  color: white;
-  display: inline-block;
-  padding: 1em;
-  background-image: linear-gradient(to top, #0556E6 49.9%, transparent 50%);
-  background-size: 100% 200%;
-  background-position: top;
-  transition: background-position 300ms; }
-  .button:hover {
-    cursor: pointer;
-    text-decoration: none;
-    color: white;
-    background-position: bottom;
-    transition: background-position 300ms; }
 
 .slider-container {
   margin: 2rem 0 3.5rem 0;
