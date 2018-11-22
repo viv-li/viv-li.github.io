@@ -1,0 +1,190 @@
+* {
+  box-sizing: border-box; }
+
+.js-loading *,
+.js-loading *:before,
+.js-loading *:after {
+  -webkit-animation-play-state: paused !important;
+          animation-play-state: paused !important; }
+
+html {
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #404040;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; }
+
+main {
+  display: block;
+  margin-bottom: auto; }
+
+a {
+  background-color: transparent;
+  color: #0556E6;
+  font-weight: bolder;
+  text-decoration: none;
+  transition: color 300ms; }
+  a:hover {
+    color: #0556E6;
+    transition: color 300ms; }
+
+b, strong {
+  font-weight: bolder; }
+
+/* Interface bar
+---------------------------------------------------------------------- */
+.bar {
+  background-color: #EEEEEE;
+  height: 24px;
+  position: relative;
+  white-space: nowrap;
+  /** Interface dots */ }
+  .bar h3 {
+    font-family: "Inconsolata", monospace;
+    line-height: 24px;
+    font-size: 0.9em;
+    margin: 0;
+    margin-left: 60px; }
+  .bar i {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    background-color: #FF635B; }
+    .bar i:before, .bar i:after {
+      content: '';
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      position: absolute; }
+    .bar i:before {
+      background-color: #FFBD2E;
+      left: 16px; }
+    .bar i:after {
+      background-color: #29CE42;
+      left: 32px; }
+
+/* Footer
+---------------------------------------------------------------------- */
+footer {
+  background-color: #404040;
+  color: white;
+  margin-top: 2rem; }
+  footer p {
+    margin: 1.25rem 0;
+    float: left; }
+  footer .social-links {
+    float: right;
+    font-size: 0; }
+    footer .social-links a {
+      font-size: 1em;
+      display: inline-block;
+      height: 100%;
+      color: white;
+      text-decoration: none; }
+      footer .social-links a i {
+        font-size: 2rem;
+        text-align: center;
+        width: 4rem;
+        height: 4rem;
+        padding: 1rem;
+        background-image: linear-gradient(to top, #0556E6 49.9%, transparent 50%);
+        background-size: 100% 200%;
+        background-position: top;
+        transition: background-position 300ms; }
+        footer .social-links a i:hover {
+          cursor: pointer;
+          text-decoration: none;
+          color: white;
+          background-position: bottom;
+          transition: background-position 300ms; }
+  @media (max-width: 899px) {
+    footer {
+      text-align: center; }
+      footer p {
+        line-height: 1.5; }
+      footer .social-links {
+        float: none; } }
+
+.content {
+  margin-left: auto;
+  margin-right: auto; }
+  @media (max-width: 699px) {
+    .content {
+      max-width: 420px;
+      padding: 30px; } }
+  @media (min-width: 700px) {
+    .content {
+      max-width: 480px; } }
+  @media (min-width: 900px) {
+    .content {
+      max-width: 660px; } }
+
+a.back-home {
+  position: fixed;
+  z-index: 10;
+  top: 2.6rem;
+  left: 1rem;
+  font-size: 2rem;
+  color: #0556E6;
+  overflow: hidden; }
+  a.back-home:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    color: #404040;
+    overflow: hidden;
+    content: url("/public/images/back-home-icon.svg");
+    transition: height 500ms; }
+  a.back-home:hover:before {
+    height: 0; }
+  @media (max-width: 699px) {
+    a.back-home {
+      top: 1rem;
+      left: 0.3rem; } }
+
+h1 {
+  font-family: "Inconsolata", monospace;
+  font-size: 2.8em; }
+
+h2 {
+  font-weight: normal;
+  font-size: 1.4em; }
+
+.button {
+  text-decoration: none;
+  background-color: #404040;
+  color: white;
+  display: inline-block;
+  padding: 1em;
+  background-image: linear-gradient(to top, #0556E6 49.9%, transparent 50%);
+  background-size: 100% 200%;
+  background-position: top;
+  transition: background-position 300ms; }
+  .button:hover {
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    background-position: bottom;
+    transition: background-position 300ms; }
+
+.slider-container {
+  margin: 2rem 0 3.5rem 0;
+  border: 2px solid #EEEEEE;
+  margin-left: -2px;
+  margin-right: -2px; }
+
+ul {
+  list-style-type: square;
+  padding-left: 18px; }

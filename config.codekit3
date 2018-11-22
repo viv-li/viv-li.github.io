@@ -110,6 +110,40 @@
 		"oO": 0,
 		"oS": 1
 		},
+	"/portfolio/awesome-slider.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/portfolio/awesome-slider.html",
+		"oF": 0
+		},
+	"/portfolio/interfacelift.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/portfolio/interfacelift.html",
+		"oF": 0
+		},
+	"/portfolio/webcomp.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "/portfolio/webcomp.html",
+		"oF": 0
+		},
+	"/public/css/_common.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "/public/css/_common.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
 	"/public/css/_mixins.scss": {
 		"aP": 0,
 		"bl": 0,
@@ -119,6 +153,19 @@
 		"ma": 0,
 		"oA": 1,
 		"oAP": "/public/css/_mixins.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"/public/css/_variables.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "/public/css/_variables.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
@@ -133,13 +180,6 @@
 		"oF": 0,
 		"oS": 3
 		},
-	"/public/css/main.css.map": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "/public/css/main.css.map",
-		"oF": 0
-		},
 	"/public/css/main.scss": {
 		"aP": 1,
 		"bl": 0,
@@ -152,6 +192,59 @@
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
+		},
+	"/public/css/project.css": {
+		"aP": 1,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 0,
+		"oAP": "/public/css/project-min.css",
+		"oF": 0,
+		"oS": 3
+		},
+	"/public/css/project.scss": {
+		"aP": 1,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 0,
+		"oAP": "/public/css/project.css",
+		"oF": 1,
+		"oS": 0,
+		"uL": 1
+		},
+	"/public/images/back-home-blue-icon.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "/public/images/back-home-blue-icon.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
+		},
+	"/public/images/back-home-icon.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "/public/images/back-home-icon.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
+		},
+	"/public/images/loading-icon.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "/public/images/loading-icon.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
 		},
 	"/public/images/screenshots/aca-0.png": {
 		"ft": 32768,
@@ -208,6 +301,39 @@
 		"oT": 1,
 		"q": 100
 		},
+	"/public/images/screenshots/interfacelift-1.png": {
+		"ft": 32768,
+		"iS": 328176,
+		"oA": 0,
+		"oAP": "/public/images/screenshots/interfacelift-1.png",
+		"oF": 0,
+		"oIPL": 1,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
+	"/public/images/screenshots/interfacelift-2.png": {
+		"ft": 32768,
+		"iS": 279470,
+		"oA": 0,
+		"oAP": "/public/images/screenshots/interfacelift-2.png",
+		"oF": 0,
+		"oIPL": 1,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
+	"/public/images/screenshots/interfacelift-3.png": {
+		"ft": 32768,
+		"iS": 138356,
+		"oA": 0,
+		"oAP": "/public/images/screenshots/interfacelift-3.png",
+		"oF": 0,
+		"oIPL": 1,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
 	"/public/images/screenshots/webcomp-0.jpg": {
 		"ft": 16384,
 		"iS": 76000,
@@ -219,12 +345,62 @@
 		"opt": 1,
 		"q": 100
 		},
+	"/public/images/screenshots/webcomp-1.jpg": {
+		"ft": 16384,
+		"iS": 251478,
+		"jF": 0,
+		"oA": 0,
+		"oAP": "/public/images/screenshots/webcomp-1.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 1,
+		"q": 100
+		},
+	"/public/images/screenshots/webcomp-2.jpg": {
+		"ft": 16384,
+		"iS": 267382,
+		"jF": 0,
+		"oA": 0,
+		"oAP": "/public/images/screenshots/webcomp-2.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 1,
+		"q": 100
+		},
+	"/public/js/main-min.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/public/js/main-min-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
 	"/public/js/main.js": {
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
 		"oA": 0,
 		"oAP": "/public/js/main-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/public/js/modernizr-config.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "/public/js/modernizr-config-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
+		},
+	"/public/js/modernizr.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/public/js/modernizr-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0

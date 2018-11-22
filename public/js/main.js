@@ -1,6 +1,7 @@
+/* global Modernizr, mixitup */
+
 document.body.classList.add('js-loading');
 
-/* global mixitup */
 var elMixGrid = document.getElementById('portfolio-mix-grid');
 
 var mixer = mixitup(elMixGrid, {
@@ -32,13 +33,11 @@ mixer.show()
 document.body.classList.remove('js-loading');
 
 /* Make filter scroll to top when they are clicked */
-document.querySelectorAll('.filter').forEach((function(filter) {
-	filter.addEventListener('click', (function(event) {
-		event.preventDefault();
+document.querySelectorAll('.filter').forEach(function(filter) {
+	filter.addEventListener('click', function() {
 		document.getElementById('portfolio').scrollIntoView(true, {behavior: "smooth"});
-	}).bind(this));
-}).bind(this));
-
+	}, Modernizr.passiveeventlisteners ? { passive: true } : false);
+});
 
 /* Figure out if this is a touch device */
 function hasTouch() {
@@ -47,26 +46,16 @@ function hasTouch() {
            || navigator.msMaxTouchPoints > 0;
 }
 
-// Test via a getter in the options object to see if the passive property is accessed
-var supportsPassive = false;
-try {
-  var opts = Object.defineProperty({}, 'passive', {
-    get: function() {
-      supportsPassive = true;
-    }
-  });
-  window.addEventListener("testPassive", null, opts);
-  window.removeEventListener("testPassive", null, opts);
-} catch (e) {}
-
-
+/* Apply CSS classes to handle hover effects on touch devices or those that don't support hover media queries */
 if (!hasTouch()) {
-    document.body.classList.add('not-touch');
-} else {
-	/* Add event listeners to show/hide portfolio mix overlay on touch devices */
-	document.querySelectorAll('.mix').forEach((function(mix) {
-		mix.addEventListener('touchstart', (function(event) {
-			mix.classList.toggle('odd-touch');
-		}).bind(this), supportsPassive ? { passive: true } : false);
-	}).bind(this));
+  document.body.classList.add('no-touch');
+}  else {
+  /* Add event listeners to show/hide portfolio mix overlay on touch devices */
+	document.querySelectorAll('.mix').forEach(function(mix) {
+   "click".split(" ").forEach(function(event){
+      mix.addEventListener(event, function() {
+        mix.classList.toggle('odd-touch');
+      }, Modernizr.passiveeventlisteners ? { passive: true } : false);
+    });
+  });
 }

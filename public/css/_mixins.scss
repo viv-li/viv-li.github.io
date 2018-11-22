@@ -15,6 +15,10 @@
   @media (min-width: 1800px) { @content; }
 }
 
+@mixin for-tablet-portrait-down {
+  @media (max-width: 899px) { @content; }
+}
+
 // Animations
 @mixin keyframes($animation-name) {
     @-webkit-keyframes #{$animation-name} {
@@ -53,16 +57,16 @@
 
 // Button hover
 @mixin button-hover($bgColor, $textColor) {
-  background-repeat: none;
   background-image: linear-gradient(to top, $bgColor 49.9%, transparent 50%);
   background-size: 100% 200%;
   background-position: top;
-  @include transition(background-position 150ms);
+  @include transition(background-position 300ms);
 
   &:hover {
     cursor: pointer;
+    text-decoration: none;
     color: $textColor;
     background-position: bottom;
-    @include transition(background-position 150ms);
+    @include transition(background-position 300ms);
   }
 }

@@ -1,0 +1,81 @@
+@import "mixins";
+@import "variables";
+@import "common";
+
+.content {
+	margin-left: auto;
+	margin-right: auto;
+	@include for-mobile-only {
+		max-width: 420px;
+		padding: 30px;
+	}
+	@include for-tablet-portrait-up {
+		max-width: 480px;
+	}
+	@include for-tablet-landscape-up {
+		max-width: 660px;
+	}
+}
+
+a.back-home {
+	position: fixed;
+	z-index: 10;
+	top: 2.6rem;
+	left: 1rem;
+	font-size: 2rem;
+	color: $brand-primary;
+	overflow: hidden;
+
+  &:before {
+    position: absolute;
+		top: 0;
+		left: 0;
+    height: 100%;
+    color: $text-color;
+    overflow: hidden;
+    content: url('/public/images/back-home-icon.svg');
+    transition: height 500ms;
+  }
+  
+  &:hover {
+      &:before {
+      height: 0;
+    }
+  }
+
+  @include for-mobile-only {
+  	top: 1rem;
+  	left: 0.3rem;
+  }
+}
+
+h1 {
+	font-family: "Inconsolata", monospace;
+	font-size: 2.8em;
+}
+
+h2 {
+	font-weight: normal;
+	font-size: 1.4em;
+}
+
+.button {
+	text-decoration: none;
+	background-color: $text-color;
+	color: white;
+	display: inline-block;
+	padding: 1em;
+	@include button-hover($brand-primary, white);
+}
+
+.slider-container {
+	margin: 2rem 0 3.5rem 0;
+	border: 2px solid $interface-gray;
+	margin-left: -2px;
+	margin-right: -2px;
+}
+
+ul {
+	list-style-type: square;
+	padding-left: 18px;
+}

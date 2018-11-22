@@ -1,0 +1,138 @@
+* { box-sizing: border-box }
+
+.js-loading *,
+.js-loading *:before,
+.js-loading *:after {
+  animation-play-state: paused !important;
+}
+
+html {
+  line-height: 1.5; // Correct the line height in all browsers.
+
+  -webkit-text-size-adjust: 100%; // Prevent adjustments of font size after orientation changes in iOS.
+	scroll-behavior: smooth;
+}
+
+body {
+	margin: 0; // Remove the margin in all browsers
+	font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #404040;
+	overflow: auto;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+main {
+	 display: block; //Render the `main` element consistently in IE.
+	 margin-bottom: auto;
+}
+
+a {
+  background-color: transparent; // Remove the gray background on active links in IE 10.
+  color: $brand-primary;
+  font-weight: bolder;
+  text-decoration: none;
+  transition: color 300ms;
+
+  &:hover {
+ 		color: $brand-primary;
+  	transition: color 300ms;
+  };
+}
+
+b, strong {
+	font-weight: bolder;
+}
+
+/* Interface bar
+---------------------------------------------------------------------- */
+.bar {
+	background-color: $interface-gray;
+	height: $mix-bar-height;
+	position: relative;
+	white-space: nowrap;
+	
+	h3 {
+		font-family: "Inconsolata", monospace;
+		line-height: $mix-bar-height;
+		font-size: 0.9em;
+		margin: 0;
+		margin-left: 60px;
+	}
+
+	/** Interface dots */
+	i {
+		width: 12px;
+		height: 12px;
+		border-radius: 50%;
+		position: absolute;
+		top: 6px;
+		left: 6px;
+		background-color: $interface-red;
+
+		&:before, &:after {
+			content: '';
+			display: inline-block;
+			width: 12px;
+			height: 12px;
+			border-radius: 50%;
+			position: absolute;
+		}
+		&:before {
+			background-color: $interface-yellow;
+			left: 16px;
+		}
+		&:after {
+			background-color: $interface-green;
+			left: 32px;
+		}
+	}
+}
+
+/* Footer
+---------------------------------------------------------------------- */
+footer {
+	background-color: $text-color;
+	color: white;
+	margin-top: 2rem;
+
+	p {
+		margin: 1.25rem 0;
+		float: left;
+	}
+
+	.social-links {
+		float: right;
+		font-size: 0;
+
+		a {
+			font-size: 1em;
+			display: inline-block;
+			height: 100%;
+			color: white;
+			text-decoration: none;
+
+			i {
+				font-size: 2rem;
+				text-align: center;
+				width: 4rem;
+				height: 4rem;
+				padding: 1rem;
+				@include button-hover($brand-primary, white);
+			}
+		}
+	}
+
+	@include for-tablet-portrait-down {
+		text-align: center;
+
+		p {
+			line-height: 1.5;
+		}
+
+		.social-links {
+			float: none;
+		}
+	}
+}

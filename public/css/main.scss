@@ -1,39 +1,10 @@
 @import "mixins";
-
-$brand-primary: #0556E6;
-$text-color: #404040;
-$interface-gray: #EEEEEE;
-$interface-red: #FF635B;
-$interface-yellow: #FFBD2E;
-$interface-green: #29CE42;
-$footer-height: 100px;
-$bar-height: 24px;
-
-
-* { box-sizing: border-box }
-
-.js-loading *,
-.js-loading *:before,
-.js-loading *:after {
-  animation-play-state: paused !important;
-}
-
-html {
-	scroll-behavior: smooth;
-}
-
-body {
-	font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-	color: #404040;
-	overflow: auto;
-	margin: 0;
-	display: flex;
-	flex-direction: column;
-	min-height: 100vh;
-}
+@import "variables";
+@import "common";
 
 .content {
-	margin: 0 auto;
+	margin-left: auto;
+	margin-right: auto;
 	@include for-mobile-only {
 		max-width: 420px;
 		padding: 20px;
@@ -120,7 +91,7 @@ h2 {
 /* Portfolio
 ---------------------------------------------------------------------- */
 #portfolio {
-	padding: 1rem 0 2rem 0;
+	padding-top: 1rem;
 }
 
 .filters {
@@ -164,7 +135,7 @@ h2 {
 	}
 }
 
-body.not-touch .filter {
+.no-touch .filter {
 	&:after {
 		content: '';
 		display: inline-block;
@@ -195,9 +166,10 @@ body.not-touch .filter {
 ---------------------------------------------------------------------- */
 #portfolio-mix-grid {
 	text-align: justify;
+	line-height: 0; // stop .gap elements taking up vertical space
 
 	@include for-tablet-portrait-up {
-		min-height: 662px;
+		min-height: 677px;
 	}
 	@include for-desktop-up {
 		min-height: 461px;
@@ -213,54 +185,11 @@ body.not-touch .filter {
 }
 
 .mix {
+	line-height: 1.3; // restore normal line height
 	vertical-align: top;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
   overflow: hidden;
   position: relative;
-
-	.bar {
-		background-color: $interface-gray;
-		height: $bar-height;
-		position: relative;
-		white-space: nowrap;
-		
-		h3 {
-			font-family: "Inconsolata", monospace;
-			line-height: $bar-height;
-			font-size: 0.9em;
-			margin: 0;
-			margin-left: 60px;
-		}
-
-		/** Interface dots */
-		i {
-			width: 12px;
-			height: 12px;
-			border-radius: 50%;
-			position: absolute;
-			top: 6px;
-			left: 6px;
-			background-color: $interface-red;
-
-			&:before, &:after {
-				content: '';
-				display: inline-block;
-				width: 12px;
-				height: 12px;
-				border-radius: 50%;
-				position: absolute;
-			}
-			&:before {
-				background-color: $interface-yellow;
-				left: 16px;
-			}
-			&:after {
-				background-color: $interface-green;
-				left: 32px;
-			}
-
-		}
-	}
 
 	img {
 		display: block;
@@ -284,6 +213,8 @@ body.not-touch .filter {
 			text-align: left;
 			line-height: 1.6;
 			padding: 0 1rem;
+			margin-top: 0.6rem;
+			margin-bottom: 0;
 
 			li {
 				display: inline-block;
@@ -297,25 +228,26 @@ body.not-touch .filter {
 		}
 
 		p {
-			margin-top: auto;
-			margin-bottom: 2*$bar-height;
+			margin: auto;
+			padding-bottom: $mix-bar-height;
 			text-align: center;
+			
 			a {
-				color: $brand-primary;
-				background-color: $interface-gray;
+				color: white;
+				background-color: $text-color;
 				text-decoration: none;
 				display: inline-block;
-				padding: 0.5rem 1rem;
+				padding: 0.75rem;
 				@include button-hover($brand-primary, white);
 			}
 		}
 	}
 }
 
-body.not-touch .mix:hover,
+.no-touch .mix:hover,
 .mix.odd-touch {
 	.overlay {
-		top: $bar-height;
+		top: $mix-bar-height;
 		@include transition(top 300ms ease)
 	}
 }
@@ -327,45 +259,4 @@ body.not-touch .mix:hover,
 
 .mixitup-ready .mix {
    visibility: visible;
-}
-
-
-/* Footer
----------------------------------------------------------------------- */
-footer {
-	background-color: $text-color;
-	color: white;
-	margin-top: auto;
-	font-size: 0;
-
-	.social-link {
-		display: inline-block;
-		height: 100%;
-		color: white;
-		text-decoration: none;
-
-		i {
-			font-size: 2rem;
-			text-align: center;
-			width: 4rem;
-			height: 4rem;
-			padding: 1rem;
-			@include button-hover($brand-primary, white);
-		}
-	}
-
-	.copyright {
-		display: inline-block;
-		vertical-align: text-bottom;
-		font-size: 0.9rem;
-		margin-left: 1rem;
-	}
-
-	@include for-mobile-only {
-		text-align: center;
-		.copyright {
-			margin: 1rem 0;
-			display: block;
-		}
-	}
 }
