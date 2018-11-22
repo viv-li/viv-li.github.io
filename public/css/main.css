@@ -327,7 +327,7 @@ h2 {
     .mix .overlay ul {
       list-style-type: none;
       text-align: left;
-      line-height: 1.6;
+      line-height: 1.4;
       padding: 0 1rem;
       margin-top: 0.6rem;
       margin-bottom: 0; }
@@ -337,7 +337,7 @@ h2 {
         text-transform: uppercase;
         background-color: #404040;
         padding: 0.25rem;
-        line-height: 0.9;
+        line-height: 0.7;
         white-space: nowrap; }
     .mix .overlay p {
       margin: auto;
