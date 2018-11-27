@@ -55,7 +55,7 @@ a.button {
 	border: none;
 	display: inline-block;
 	padding: 1em;
-	-webkit-tap-highlight-color: transparent;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0.2);
 	@include button-hover($brand-primary, white);
 }
 
