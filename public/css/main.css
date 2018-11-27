@@ -142,17 +142,7 @@ footer {
         text-align: center;
         width: 4rem;
         height: 4rem;
-        padding: 1rem;
-        background-image: linear-gradient(to top, #0556E6 49.9%, transparent 50%);
-        background-size: 100% 200%;
-        background-position: top;
-        transition: background-position 300ms; }
-        footer .social-links a i:hover {
-          cursor: pointer;
-          text-decoration: none;
-          color: white;
-          background-position: bottom;
-          transition: background-position 300ms; }
+        padding: 1rem; }
   @media (max-width: 899px) {
     footer {
       text-align: center; }
@@ -160,6 +150,18 @@ footer {
         line-height: 1.5; }
       footer .social-links {
         float: none; } }
+
+.no-touch .social-links i {
+  background-image: linear-gradient(to top, #0556E6 49.9%, transparent 50%);
+  background-size: 100% 200%;
+  background-position: top;
+  transition: background-position 300ms; }
+  .no-touch .social-links i:hover {
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    background-position: bottom;
+    transition: background-position 300ms; }
 
 .content {
   margin-left: auto;

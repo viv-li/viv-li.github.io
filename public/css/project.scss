@@ -23,6 +23,9 @@ a.back-home {
 	font-size: 2rem;
 	color: $brand-primary;
 	overflow: hidden;
+	transition: height 300ms;
+	-webkit-tap-highlight-color: transparent;
+
 
   &:before {
     position: absolute;
@@ -32,13 +35,22 @@ a.back-home {
     color: $text-color;
     overflow: hidden;
     content: url('/public/images/back-home-icon.svg');
-    transition: height 500ms;
+    transition: height 300ms;
   }
   
   &:hover {
       &:before {
       height: 0;
     }
+  }
+
+  &:active,
+  &:focus {
+  	outline: none;
+  	&:before {
+  		height: 0;
+    	transition: height 300ms;
+  	}
   }
 
   @include for-mobile-only {
