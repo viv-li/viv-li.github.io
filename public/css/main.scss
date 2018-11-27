@@ -247,12 +247,3 @@ h2 {
 		@include transition(top 300ms ease)
 	}
 }
-
-/** Loading animation */
-.mix {
-  visibility: hidden;
-}
-
-.mixitup-ready .mix {
-   visibility: visible;
-}
