@@ -1,6 +1,7 @@
 # viv-li.github.io
 
-Vivian Li - Web Developer & Designer Portfolio Website
+Web Developer & Designer Portfolio Website
+
 [https://viv-li.github.io/](https://viv-li.github.io/)
 
 
