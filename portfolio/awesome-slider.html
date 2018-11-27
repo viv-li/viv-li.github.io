@@ -140,9 +140,11 @@
 			outline: none;
 			z-index: 5;
 			cursor: pointer;
-			opacity: 0.3;
+			opacity: 0.5;
 			-webkit-transition: opacity .15s ease-out;
 			transition: opacity .15s ease-out;
+			/* Get rid of that ugly highlight box on Chrome on touchscreen */
+			-webkit-tap-highlight-color: transparent;
 		}
 
 		.next:hover,
@@ -158,18 +160,18 @@
 
 		.next {
 			right: 0;
-			background: -moz-linear-gradient(to left, rgba(128, 128, 128, 0.65) 0%, rgba(128, 128, 128, 0) 100%) rgba(128, 128, 128, 0);
-			background: -webkit-linear-gradient(to left, rgba(128, 128, 128, 0.65) 0%, rgba(128, 128, 128, 0) 100%) rgba(128, 128, 128, 0);
-			background: -ms-linear-gradient(to left, rgba(128, 128, 128, 0.65) 0%, rgba(128, 128, 128, 0) 100%) rgba(128, 128, 128, 0);
-			background: linear-gradient(to left, rgba(128, 128, 128, 0.65) 0%, rgba(128, 128, 128, 0) 100%) rgba(128, 128, 128, 0);
+			background: -moz-linear-gradient(to left, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 100%) rgba(0, 0, 0, 0);
+			background: -webkit-linear-gradient(to left, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 100%) rgba(0, 0, 0, 0);
+			background: -ms-linear-gradient(to left, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 100%) rgba(0, 0, 0, 0);
+			background: linear-gradient(to left, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 100%) rgba(0, 0, 0, 0);
 		}
 
 		.prev {
 			left: 0;
-			background: -moz-linear-gradient(to right, rgba(128, 128, 128, 0.65) 0%, rgba(128, 128, 128, 0) 100%) rgba(128, 128, 128, 0);
-			background: -webkit-linear-gradient(to right, rgba(128, 128, 128, 0.65) 0%, rgba(128, 128, 128, 0) 100%) rgba(128, 128, 128, 0);
-			background: -ms-linear-gradient(to right, rgba(128, 128, 128, 0.65) 0%, rgba(128, 128, 128, 0) 100%) rgba(128, 128, 128, 0);
-			background: linear-gradient(to right, rgba(128, 128, 128, 0.65) 0%, rgba(128, 128, 128, 0) 100%) rgba(128, 128, 128, 0);
+			background: -moz-linear-gradient(to right, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 100%) rgba(0, 0, 0, 0);
+			background: -webkit-linear-gradient(to right, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 100%) rgba(0, 0, 0, 0);
+			background: -ms-linear-gradient(to right, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 100%) rgba(0, 0, 0, 0);
+			background: linear-gradient(to right, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 100%) rgba(0, 0, 0, 0);
 		}
 
 		nav {
@@ -304,7 +306,7 @@
 			right: 0;
 			height: 100%;
 			width: 2px;
-			background-color: #6a6a6a;
+			background-color: white;
 			opacity: .75;
 			-webkit-transform-origin: 50% 100% 0;
 			transform-origin: 50% 100% 0;
@@ -346,6 +348,13 @@
 			top: calc(-50% + -1px);
 			-webkit-transform: rotate(135deg);
 			transform: rotate(135deg);
+		}
+
+		.next:hover .a-right:before,
+		.next:hover .a-right:after,
+		.prev:hover .a-left:before,
+		.prev:hover .a-left:after {
+			background-color: #0556E6;
 		}
 
 		.next:hover .a-right:before {
