@@ -7,10 +7,14 @@
 	margin-right: auto;
 	@include for-mobile-only {
 		max-width: 420px;
+	}
+
+	@include for-tablet-portrait-down {
 		padding: 30px;
 	}
+
 	@include for-tablet-portrait-up {
-		max-width: 480px;
+		max-width: 540px;
 	}
 	@include for-tablet-landscape-up {
 		max-width: 660px;
@@ -55,10 +59,10 @@ a.back-home {
 
   @include for-mobile-only {
   	top: 1rem;
-  	left: 0.3rem;
+  	left: 3px;
   }
   @include for-tablet-portrait-up {
-  	top: 2.6rem;
+  	top: 1.4rem;
 		left: 1rem;
   }
   @include for-tablet-landscape-up {	
@@ -69,12 +73,31 @@ a.back-home {
 
 h1 {
 	font-family: "Inconsolata", monospace;
-	font-size: 2.8em;
+	@include for-mobile-only {
+		font-size: 1.6em;
+		margin-top: 2.6rem;
+	}
+	@include for-tablet-portrait-up {
+		font-size: 2.0em;
+	}
+	@include for-tablet-landscape-up {
+		font-size: 2.8em;
+	}
 }
 
 h2 {
 	font-weight: normal;
-	font-size: 1.4em;
+	margin-bottom: 1.4rem;
+
+	@include for-mobile-only {
+		font-size: 1.0em;
+	}
+	@include for-tablet-portrait-up {
+		font-size: 1.0em;
+	}
+	@include for-tablet-landscape-up {
+		font-size: 1.4em;
+	}
 }
 
 button:disabled {

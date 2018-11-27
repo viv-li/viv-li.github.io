@@ -168,11 +168,13 @@ footer {
   margin-right: auto; }
   @media (max-width: 699px) {
     .content {
-      max-width: 420px;
+      max-width: 420px; } }
+  @media (max-width: 899px) {
+    .content {
       padding: 30px; } }
   @media (min-width: 700px) {
     .content {
-      max-width: 480px; } }
+      max-width: 540px; } }
   @media (min-width: 900px) {
     .content {
       max-width: 660px; } }
@@ -204,10 +206,10 @@ a.back-home {
   @media (max-width: 699px) {
     a.back-home {
       top: 1rem;
-      left: 0.3rem; } }
+      left: 3px; } }
   @media (min-width: 700px) {
     a.back-home {
-      top: 2.6rem;
+      top: 1.4rem;
       left: 1rem; } }
   @media (min-width: 900px) {
     a.back-home {
@@ -215,12 +217,30 @@ a.back-home {
       left: 1.6rem; } }
 
 h1 {
-  font-family: "Inconsolata", monospace;
-  font-size: 2.8em; }
+  font-family: "Inconsolata", monospace; }
+  @media (max-width: 699px) {
+    h1 {
+      font-size: 1.6em;
+      margin-top: 2.6rem; } }
+  @media (min-width: 700px) {
+    h1 {
+      font-size: 2.0em; } }
+  @media (min-width: 900px) {
+    h1 {
+      font-size: 2.8em; } }
 
 h2 {
   font-weight: normal;
-  font-size: 1.4em; }
+  margin-bottom: 1.4rem; }
+  @media (max-width: 699px) {
+    h2 {
+      font-size: 1.0em; } }
+  @media (min-width: 700px) {
+    h2 {
+      font-size: 1.0em; } }
+  @media (min-width: 900px) {
+    h2 {
+      font-size: 1.4em; } }
 
 button:disabled {
   font-size: 1rem;
