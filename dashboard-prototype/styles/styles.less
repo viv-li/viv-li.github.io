@@ -1,0 +1,40 @@
+.container {
+  display: flex;
+  .sidebar {
+    flex: 0 0 400px;
+    background: white;
+    border-right: 1px solid @grey-25;
+    display: inline-block;
+  }
+
+  .main {
+    background: @grey-10;
+    flex: 1 1 auto;
+    height: 100vh;
+    overflow: scroll;
+
+    .grid {
+      padding: 64px;
+      display: grid;
+      grid-gap: 30px;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    
+      &__item {
+        border-radius: 8px;
+        height: 340px;
+        border: 4px solid transparent;
+        box-shadow: inset 0 0 0 1px @grey-25;
+
+        &.selected {
+          border: 4px solid @blue;
+          box-shadow: 0 15px 25px 0 fade(@midnight, 10%);
+        }
+      }
+    }
+  }
+}
+
+.selection-area {
+  background: fade(@blue, 25%);
+  border: 1px solid fade(@blue, 50%);
+}
