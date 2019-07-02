@@ -75,6 +75,7 @@
     overflow: scroll;
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
 
     .grid {
       flex: 1 1 auto;
@@ -82,10 +83,11 @@
       display: grid;
       grid-gap: 30px;
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      grid-auto-rows: min-content;
     
       &__item {
         border-radius: 8px;
-        height: 340px;
+        height: 360px;
         border: 4px solid transparent;
         box-shadow: inset 0 0 0 1px @grey-25;
         position: relative;
