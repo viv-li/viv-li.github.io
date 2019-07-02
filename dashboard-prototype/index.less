@@ -11,20 +11,63 @@
 // @import "./styles/Configuration";
 // @import "./styles/Mixins";
 @import "./styles/Colors";
-// @import "./styles/Spacing";
-// @import "./styles/Typography";
+@import "./styles/Spacing";
+@import "./styles/Typography";
 // @import "./styles/Transitions";
 // @import "./styles/Animations";
 
 .container {
   display: flex;
   .sidebar {
-    flex: 0 0 400px;
+    flex: 0 0 300px;
     background: white;
     border-right: 1px solid @grey-25;
     display: inline-block;
+    padding: 32px;
+
+    .section-title {
+      color: @grey;
+    }
+
+    ul {
+      list-style-image: url("Assets/folder.svg");
+      list-style-position: inside;
+
+      li {
+        padding: 10px;
+        margin: 0 -10px;
+        border-radius: 4px;
+        color: fade(@slate, 50%);
+        background-color: none;
+        transition: background-color 0.15s ease-out;
+
+        &.active {
+          list-style-image: url("Assets/folder-purple.svg");
+          color: @midnight;
+        }
+
+        &.dragover {
+          background: fade(@blue, 25%);
+          color: @slate;
+        }
+
+        &.drop-success {
+          background: @blue;
+          color: white;
+        }
+      }
+    }
   }
 
+  header {
+    padding: 0 64px;
+
+    h2 > img {
+      height: 21px;
+      vertical-align: baseline;
+      margin-right: 4px;
+    }
+  }
   .main {
     background: @grey-10;
     flex: 1 1 auto;
@@ -58,6 +101,11 @@
         &.selected {
           border: 4px solid @blue;
           box-shadow: 0 15px 25px 0 fade(@midnight, 10%);
+          cursor: grab;
+
+          &:active {
+            cursor: grabbing;
+          }
 
           .select-checkbox {
             background: @blue;
@@ -76,4 +124,30 @@
 .selection-area {
   background: fade(@blue, 25%);
   border: 1px solid fade(@blue, 50%);
+}
+
+#drag-ghost {
+  position: absolute;
+  top: -1000px;
+  padding: 11px;
+  background-color: @blue;
+
+  border-radius: 8px;
+
+  img {
+    margin-right: 6px;
+  }
+
+  label {
+    color: white;
+    vertical-align: text-bottom;
+    .text-context-label;
+  }
+}
+
+.grabbing-cursor {
+	cursor: move !important; /* fallback: no `url()` support or images disabled */
+	cursor: -webkit-grabbing !important; /* Chrome 1-21, Safari 4+ */
+	cursor:    -moz-grabbing !important; /* Firefox 1.5-26 */
+	cursor:         grabbing !important; /* W3C standards syntax, should come least */
 }
