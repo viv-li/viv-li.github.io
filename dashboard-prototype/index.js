@@ -7,20 +7,9 @@ window.selection = Selection.create({
   boundaries: [".grid"],
 
   onSelect({ target, originalEvent, selectedElements }) {
+    console.log("onselect");
     // Check if clicked element is already selected
     const selected = target.classList.contains("selected");
-
-    // Remove class if the user isn't pressing the control key or ⌘ key and the
-    // current target is not already selected
-    if (!originalEvent.ctrlKey && !originalEvent.metaKey && !selected) {
-      // Remove class from every element that is selected
-      for (const el of selectedElements) {
-        unselectElement(el);
-      }
-
-      // Clear previous selection
-      this.clearSelection();
-    }
 
     if (!selected) {
       // Select element
@@ -38,24 +27,40 @@ window.selection = Selection.create({
     if (evt.target.closest(".select-checkbox")) {
       return true;
     }
-    // Cancel selection if it starts on a grid item
+
+    // Cancel selection if we're not in selection mode and click a grid item
     if (evt.target.closest(".grid__item")) {
-      return false;
+      if (
+        window.selection._selectedStore.length === 0 ||
+        evt.target.closest(".grid__item").classList.contains("selected")
+      ) {
+        return false;
+      }
     }
 
-    // Unselect everything if the user clicks the grid and isn't pressing the control key or ⌘ key
-    if ((evt.target.id = "grid" && !evt.ctrlKey && !evt.metaKey)) {
+    // Unselect everything if the user clicks the grid and isn't pressing the ctrl, meta, or shift key
+    if (
+      evt.target.id === "grid" &&
+      !evt.ctrlKey &&
+      !evt.metaKey &&
+      !evt.shiftKey
+    ) {
       for (let el of window.selection._selectedStore) {
         unselectElement(el);
       }
       window.selection._selectedStore = [];
     }
+
     return true;
   },
 
   onStart({ selectedElements, originalEvent }) {
-    // Remove class if the user isn't pressing the control key or ⌘ key
-    if (!originalEvent.ctrlKey && !originalEvent.metaKey) {
+    // Remove class if the user isn't pressing the ctrl, meta, or shift key
+    if (
+      !originalEvent.ctrlKey &&
+      !originalEvent.metaKey &&
+      !!originalEvent.shiftKey
+    ) {
       // Unselect all elements
       for (const el of selectedElements) {
         unselectElement(el);
@@ -88,16 +93,20 @@ const selectElement = el => {
   el.setAttribute("draggable", true);
   el.addEventListener("dragstart", ondragstart);
   el.addEventListener("dragend", ondragend);
+  document.body.classList.add("selection-mode");
 };
 
 const unselectElement = el => {
   el.classList.remove("selected");
   el.setAttribute("draggable", false);
+  if (window.selection._selectedStore.length === 0) {
+    document.body.classList.remove("selection-mode");
+  }
 };
 
 const ondragstart = e => {
   //ev.dataTransfer.setData("text/plain", window.selection._selectedStore.length);
-
+  e.stopPropagation();
   // Set custom cursor image
   var elDragGhost = document.getElementById("drag-ghost");
   elDragGhost.lastElementChild.textContent = `${
@@ -131,6 +140,7 @@ const ondrop = e => {
   for (let el of window.selection._selectedStore) {
     el.remove();
   }
+  window.selection._selectedStore = [];
   e.target.classList.add("drop-success");
   setTimeout(() => {
     e.target.classList.remove("drop-success");

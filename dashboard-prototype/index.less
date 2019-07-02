@@ -73,8 +73,11 @@
     flex: 1 1 auto;
     height: 100vh;
     overflow: scroll;
+    display: flex;
+    flex-direction: column;
 
     .grid {
+      flex: 1 1 auto;
       padding: 64px;
       display: grid;
       grid-gap: 30px;
@@ -86,16 +89,46 @@
         border: 4px solid transparent;
         box-shadow: inset 0 0 0 1px @grey-25;
         position: relative;
+        display: flex;
+        flex-direction: column;
 
         .select-checkbox {
-          width: 24px;
-          height: 24px;
-          border-radius: 12px;
+          width: 25px;
+          height: 25px;
+          border-radius: 7px;
           border: 3px solid fade(white, 25%);
           position: absolute;
           top: 16px;
           left: 16px;
           cursor: pointer;
+        }
+
+        .screenshot {
+          height: 50%;
+          background: url("./assets/screenshot1.png");
+          background-size: cover;
+          background-position: 50%;
+          border-radius: 4px 4px 0 0;
+          border: 1px solid @grey-25;
+          border-bottom: none;
+        }
+
+        .band {
+          height: 43px;
+          background-color: fade(@orange, 25%);
+          padding: 16px;
+        }
+
+        .content {
+          background-color: white;
+          padding: 16px;
+          .text-h4;
+          .regular;
+          flex: 1 1 auto;
+          margin-bottom: 0;
+          border-radius: 0 0  4px 4px;
+          border: 1px solid @grey-25;
+          border-top: none;
         }
 
         &.selected {
@@ -112,7 +145,7 @@
             &:after {
               content: url("./assets/check.svg");
               display: inline-block;
-              padding: 1px 2px;
+              padding: 2px;
             }
           }
         }
@@ -150,4 +183,10 @@
 	cursor: -webkit-grabbing !important; /* Chrome 1-21, Safari 4+ */
 	cursor:    -moz-grabbing !important; /* Firefox 1.5-26 */
 	cursor:         grabbing !important; /* W3C standards syntax, should come least */
+}
+
+.selection-mode {
+  .grid__item {
+    cursor: pointer;
+  }
 }
