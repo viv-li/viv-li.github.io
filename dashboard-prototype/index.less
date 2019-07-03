@@ -17,6 +17,11 @@
 // @import "./styles/Animations";
 
 .container {
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;          /* Likely future */      
+  
   display: flex;
   .sidebar {
     flex: 0 0 300px;
@@ -86,13 +91,15 @@
       grid-auto-rows: min-content;
     
       &__item {
+        background-color: white;
         border-radius: 8px;
         height: 360px;
-        border: 4px solid transparent;
+        border: 4px solid @grey-10;;
         box-shadow: inset 0 0 0 1px @grey-25;
         position: relative;
         display: flex;
         flex-direction: column;
+        cursor: default;
 
         .select-checkbox {
           width: 25px;
@@ -107,7 +114,6 @@
 
         .screenshot {
           height: 50%;
-          background: url("./assets/screenshot1.png");
           background-size: cover;
           background-position: 50%;
           border-radius: 4px 4px 0 0;
@@ -117,8 +123,8 @@
 
         .band {
           height: 43px;
-          background-color: fade(@orange, 25%);
           padding: 16px;
+          background-color: @grey-10;
         }
 
         .content {
@@ -136,10 +142,10 @@
         &.selected {
           border: 4px solid @blue;
           box-shadow: 0 15px 25px 0 fade(@midnight, 10%);
-          cursor: grab;
+          cursor: grab !important;
 
           &:active {
-            cursor: grabbing;
+            cursor: grabbing !important;
           }
 
           .select-checkbox {
@@ -189,6 +195,89 @@
 
 .selection-mode {
   .grid__item {
-    cursor: pointer;
+    cursor: pointer  !important;
+  }
+}
+
+.container .main .grid__item {
+  &:nth-child(1) {
+    .screenshot {
+      background-image: url("./assets/screenshot1.png");
+    }
+
+    .band {
+      background-color: fade(@purple, 25%);
+    }
+  }
+  &:nth-child(2) {
+    .screenshot {
+      background-image: url("./assets/screenshot2.png");
+    }
+  }
+
+  &:nth-child(3) {
+    .screenshot {
+      background-image: url("./assets/screenshot3.png");
+    }
+
+    .band {
+      background-color: fade(@purple, 25%);
+    }
+  }
+  
+  &:nth-child(4) {
+    .screenshot {
+      background-image: url("./assets/screenshot4.png");
+    }
+
+    .band {
+      background-color: fade(@emerald, 25%);
+    }
+  }
+  
+  &:nth-child(5) {
+    .screenshot {
+      background-image: url("./assets/screenshot5.png");
+    }
+
+    .select-checkbox {
+      border-color: @grey-25;
+    }
+  }
+  
+  &:nth-child(6) {
+    .screenshot {
+      background-image: url("./assets/screenshot6.png");
+    }
+
+    .band {
+      background-color: fade(@orange, 25%);
+    }
+  }
+  
+  &:nth-child(7) {
+    .screenshot {
+      background-image: url("./assets/screenshot7.png");
+    }
+
+    .band {
+      background-color: fade(@emerald, 25%);
+    }
+  }
+  
+  &:nth-child(8) {
+    .screenshot {
+      background-image: url("./assets/screenshot8.png");
+    }
+  }
+  
+  &:nth-child(9) {
+    .screenshot {
+      background-image: url("./assets/screenshot9.png");
+    }
+
+    .band {
+      background-color: fade(@purple, 25%);
+    }
   }
 }
