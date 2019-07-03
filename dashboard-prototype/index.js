@@ -49,6 +49,7 @@ window.selection = Selection.create({
         unselectElement(el);
       }
       window.selection._selectedStore = [];
+      document.body.classList.remove("selection-mode");
     }
 
     return true;
@@ -141,6 +142,7 @@ const ondrop = e => {
     el.remove();
   }
   window.selection._selectedStore = [];
+  document.body.classList.remove("selection-mode");
   e.target.classList.add("drop-success");
   setTimeout(() => {
     e.target.classList.remove("drop-success");
