@@ -3,8 +3,8 @@ import Selection from "./js/selection.js";
 window.selection = Selection.create({
   startThreshold: 0,
   selectables: [".grid__item"],
-  startareas: [".grid"],
-  boundaries: [".grid"],
+  startareas: ["#select-area"],
+  boundaries: ["#select-area"],
 
   onSelect({ target, originalEvent, selectedElements }) {
     console.log("onselect");
@@ -40,7 +40,7 @@ window.selection = Selection.create({
 
     // Unselect everything if the user clicks the grid and isn't pressing the ctrl, meta, or shift key
     if (
-      evt.target.id === "grid" &&
+      (evt.target.id === "select-area" || evt.target.classList.contains("grid")) &&
       !evt.ctrlKey &&
       !evt.metaKey &&
       !evt.shiftKey
@@ -112,7 +112,7 @@ const ondragstart = e => {
   var elDragGhost = document.getElementById("drag-ghost");
   elDragGhost.lastElementChild.textContent = `${
     window.selection._selectedStore.length
-  }
+    }
     project${window.selection._selectedStore.length > 1 ? "s" : ""}`;
   e.dataTransfer.setDragImage(elDragGhost, 25, 35);
 

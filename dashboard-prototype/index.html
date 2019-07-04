@@ -1,42 +1,43 @@
 <!DOCTYPE html>
 
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
 
-    <title>Dashboard prototype</title>
-    <meta
-      name="description"
-      content="Qwilr dashboard prototype for select and drag interactions"
-    />
-    <meta name="author" content="Vivian Li" />
-    <link rel="stylesheet/less" type="text/css" href="index.less" />
-  </head>
+<head>
+  <meta charset="utf-8" />
 
-  <body class="container">
-    <div id="drag-ghost">
-      <img src="./assets/project.svg">
-      <label></label>
-    </div>
-    <aside class="sidebar">
-      <h3 class="section-title text-context-label">Folders</h3>
-      <ul>
-        <li class="dropzone">Personal</li>
-        <li class="dropzone">Investor</li>
-        <li class="dropzone">Board</li>
-        <li class="dropzone">Series A</li>
-        <li class="dropzone">Sales - Invoices</li>
-        <li class="active">Sales - Agreements</li>
-        <li class="dropzone">Marketing</li>
-        <li class="dropzone">Support</li>
-        <li class="dropzone">Success</li>
-        <li class="dropzone">HR</li>
-        <li class="dropzone">Customer demo</li>
-      </ul>
-    </aside>
-    <main class="main">
-      <header><h2><img src="./assets/folder-purple.svg"> Sales - Agreements</h2></header>
-      <div id="grid" class="grid">
+  <title>Dashboard prototype</title>
+  <meta name="description" content="Qwilr dashboard prototype for select and drag interactions" />
+  <meta name="author" content="Vivian Li" />
+  <link rel="stylesheet/less" type="text/css" href="index.less" />
+</head>
+
+<body class="container">
+  <div id="drag-ghost">
+    <img src="./assets/project.svg">
+    <label></label>
+  </div>
+  <aside class="sidebar">
+    <h3 class="section-title text-context-label">Folders</h3>
+    <ul>
+      <li class="dropzone">Personal</li>
+      <li class="dropzone">Investor</li>
+      <li class="dropzone">Board</li>
+      <li class="dropzone">Series A</li>
+      <li class="dropzone">Sales - Invoices</li>
+      <li class="active">Sales - Agreements</li>
+      <li class="dropzone">Marketing</li>
+      <li class="dropzone">Support</li>
+      <li class="dropzone">Success</li>
+      <li class="dropzone">HR</li>
+      <li class="dropzone">Customer demo</li>
+    </ul>
+  </aside>
+  <main class="main">
+    <header>
+      <h2><img src="./assets/folder-purple.svg"> Sales - Agreements</h2>
+    </header>
+    <div id="select-area">
+      <div class="grid">
         <div class="grid__item first">
           <div class="select-checkbox"></div>
           <div class="screenshot"></div>
@@ -117,12 +118,15 @@
             Copywriting Proposal Template
           </div>
         </div>
-  
       </div>
-      <footer></footer>
+    </div>
+    <footer>
+      <h5>This is a prototype. All navigation (to folders and documents) has been disabled.</h5>
+    </footer>
     </div>
     <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js"></script>
     <script type="module" src="js/selection.js"></script>
     <script type="module" src="index.js"></script>
-  </body>
+</body>
+
 </html>
