@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>Side by side v2 prototype</title>
+    <meta
+      name="description"
+      content="Prototype for side by side v2 for the Qwilr editor"
+    />
+    <meta name="author" content="Vivian Li" />
+    <link rel="stylesheet/less" type="text/css" href="index.less" />
+  </head>
+
+  <body class="container">
+    <div id="widget-adder">
+      <button onmousedown="window.editorFns.onClickWidgetAdder(event)"></button>
+      <ul>
+        <li onmousedown="window.editorFns.onClickAddImage(event)">Image</li>
+        <li onmousedown="window.editorFns.onClickAddSbs(event)">
+          Side by side
+        </li>
+      </ul>
+    </div>
+
+    <div class="editor">
+      <h1
+        class="undeletable"
+        contenteditable="true"
+        onkeydown="window.editorFns.onKeyDownEditor(event)"
+        onfocus="window.editorFns.onFocusEditor(event)"
+        onblur="window.editorFns.onBlurEditor(event)"
+      ></h1>
+      <p
+        class="undeletable"
+        contenteditable="true"
+        onkeydown="window.editorFns.onKeyDownEditor(event)"
+        onfocus="window.editorFns.onFocusEditor(event)"
+        onblur="window.editorFns.onBlurEditor(event)"
+      ></p>
+    </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/interactjs/dist/interact.min.js"></script>
+    <script type="module" src="index.js"></script>
+  </body>
+</html>
