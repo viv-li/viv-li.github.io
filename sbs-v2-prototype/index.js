@@ -89,26 +89,14 @@ window.editorFns = {
     const key = event.key; // const {key} = event; ES6+
     if (key === "Enter") {
       e.preventDefault();
-      let $newLine;
-      if (e.target.tagName === "H1") {
-        $newLine = $(
-          `<h1
-            contenteditable="true"
-            onkeydown="window.editorFns.onKeyDownEditor(event)"
-            onfocus="window.editorFns.onFocusEditor(event)"
-            onblur="window.editorFns.onBlurEditor(event)"
-          ></h1>`
-        );
-      } else {
-        $newLine = $(
-          `<p
+      const $newLine = $(
+        `<p
             contenteditable="true"
             onkeydown="window.editorFns.onKeyDownEditor(event)"
             onfocus="window.editorFns.onFocusEditor(event)"
             onblur="window.editorFns.onBlurEditor(event)"
           ></p>`
-        );
-      }
+      );
       $newLine.insertAfter(e.target);
       $newLine.focus();
       return false;
@@ -187,17 +175,7 @@ window.editorFns = {
     };
     elImg.src = imageUrl;
     $imageResizer.append(elImg);
-
-    const $newLine = $(
-      `<p
-        contenteditable="true"
-        onkeydown="window.editorFns.onKeyDownEditor(event)"
-        onfocus="window.editorFns.onFocusEditor(event)"
-        onblur="window.editorFns.onBlurEditor(event)"
-      ></p>`
-    );
-    $imageResizer.insertAfter(window.lastFocussedLine);
-    $newLine.insertAfter($imageResizer);
+    $imageResizer.insertBefore(window.lastFocussedLine);
   },
   onClickAddSbs: e => {
     e.preventDefault();
@@ -211,6 +189,7 @@ window.editorFns = {
             onblur="window.editorFns.onBlurEditor(event)"
           ></h1>
           <p
+            class="undeletable"
             contenteditable="true"
             onkeydown="window.editorFns.onKeyDownEditor(event)"
             onfocus="window.editorFns.onFocusEditor(event)"
@@ -234,25 +213,21 @@ window.editorFns = {
             />
           </div>
           <p
+            class="undeletable"
             contenteditable="true"
             onkeydown="window.editorFns.onKeyDownEditor(event)"
             onfocus="window.editorFns.onFocusEditor(event)"
             onblur="window.editorFns.onBlurEditor(event)"
           ></p>
         </div>
+        <img
+          class="swap-columns-button"
+          src="assets/images/swap-columns-button.svg"
+          onclick="window.editorFns.onClickSwapColumnsButton(event)">
       </div>`
     );
 
-    const $newLine = $(
-      `<p
-        contenteditable="true"
-        onkeydown="window.editorFns.onKeyDownEditor(event)"
-        onfocus="window.editorFns.onFocusEditor(event)"
-        onblur="window.editorFns.onBlurEditor(event)"
-      ></p>`
-    );
-    $sbs.insertAfter(window.lastFocussedLine);
-    $newLine.insertAfter($sbs);
+    $sbs.insertBefore(window.lastFocussedLine);
     $sbs.find("h1").focus();
   },
 
@@ -285,6 +260,10 @@ window.editorFns = {
     e.stopPropagation();
     const elImagePlaceholder = e.target.closest(".image-placeholder");
     elImagePlaceholder.remove();
+  },
+
+  onClickSwapColumnsButton: e => {
+    e.target.closest(".sbs").classList.toggle("reverse");
   }
 };
 
