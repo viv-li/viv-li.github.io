@@ -125,6 +125,7 @@
       box-shadow: 0 0 0 4px fade(@blue, 50%);
       .resize-handle {
         display: inline-block;
+        z-index: 1;
       }
     }
     
@@ -178,7 +179,7 @@
 
     .sbs-left, .sbs-right {
       width: 50%;
-      padding: 20px;
+      padding: 24px;
     }
 
     .image-placeholder {
@@ -191,6 +192,7 @@
       cursor: pointer;
       position: relative;
       border-radius: 4px;
+      margin-bottom: 16px;
 
       .delete-button {
         position: absolute;
