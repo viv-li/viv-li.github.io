@@ -87,6 +87,7 @@ window.editorFns = {
       if (selectedWidget !== null) {
         e.preventDefault();
         selectedWidget.remove();
+        window.editorFns.hideDeleteToolbar();
       }
       return false;
     } else if (key === "Enter") {
