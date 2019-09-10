@@ -1,0 +1,20 @@
+{
+  "name": "gallery-prototype",
+  "version": "1.0.0",
+  "description": "Image gallery prototype for Qwilr Editor",
+  "main": "editor-lite.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/viv-li/gallery-prototype.git"
+  },
+  "author": "Vivian Li <l.vivian.93@gmail.com> (https://viv-li.github.io/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/viv-li/gallery-prototype/issues"
+  },
+  "homepage": "https://github.com/viv-li/gallery-prototype#readme",
+  "dependencies": {}
+}

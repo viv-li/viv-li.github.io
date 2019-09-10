@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>Gallery prototype</title>
+    <meta
+      name="description"
+      content="Gallery widget prototype for the Qwilr editor"
+    />
+    <meta name="author" content="Vivian Li" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet/less" type="text/css" href="index.less" />
+    <link rel="stylesheet" href="lightGallery/dist/css/lightgallery.css" />
+    <link rel="stylesheet" href="lightGallery/dist/css/lg-transitions.css" />
+  </head>
+
+  <body>
+    <div
+      id="image-library-modal"
+      class="modal fade"
+      tabindex="-1"
+      role="dialog"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Select an image</h4>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="image-library">
+              <div class="image">
+                <img
+                  src="assets/images/profile1.jpeg"
+                  onclick="window.editorFns.onClickModalImage(event)"
+                />
+              </div>
+              <div class="image">
+                <img
+                  src="assets/images/profile2.jpeg"
+                  onclick="window.editorFns.onClickModalImage(event)"
+                />
+              </div>
+              <div class="image">
+                <img
+                  src="assets/images/profile3.jpeg"
+                  onclick="window.editorFns.onClickModalImage(event)"
+                />
+              </div>
+              <div class="image">
+                <img
+                  src="assets/images/profile4.jpeg"
+                  onclick="window.editorFns.onClickModalImage(event)"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="widget-adder">
+      <div
+        class="button"
+        onmousedown="window.editorFns.onClickWidgetAdder(event)"
+      ></div>
+      <ul>
+        <li onmousedown="window.editorFns.onClickAddImage(event)">Image</li>
+        <li onmousedown="window.galleryFns.onClickAddImageGallery(event)">
+          Image gallery
+        </li>
+      </ul>
+    </div>
+
+    <div
+      id="gallery-widget-toolbar"
+      class="toolbar"
+      style="top: -100px; right: -100px;"
+    >
+      <div class="toolbar__main">
+        <div
+          class="toolbar__main__button"
+          onclick="window.galleryFns.onClickGalleryStyles(event)"
+        >
+          <svg
+            width="32"
+            height="32"
+            viewBox="0 0 32 32"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              x="17"
+              y="17"
+              width="10"
+              height="4"
+              rx="1"
+              transform="rotate(90 17 17)"
+              fill="white"
+            />
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M24 12H13V10H24C25.6569 10 27 11.3431 27 13V16C27 17.6569 25.6569 19 24 19H13V17H24C24.5523 17 25 16.5523 25 16V13C25 12.4477 24.5523 12 24 12Z"
+              fill="white"
+            />
+            <rect x="7" y="7" width="16" height="8" rx="1" fill="#47535D" />
+            <path
+              d="M7 8C7 7.44772 7.44772 7 8 7H11V15H8C7.44772 15 7 14.5523 7 14V8Z"
+              fill="#FF6161"
+            />
+            <rect x="11" y="7" width="4" height="8" fill="#FFB961" />
+            <rect x="15" y="7" width="4" height="8" fill="#00C5B8" />
+            <path
+              d="M19 7H22C22.5523 7 23 7.44772 23 8V14C23 14.5523 22.5523 15 22 15H19V7Z"
+              fill="#716BF1"
+            />
+          </svg>
+        </div>
+        <div
+          class="toolbar__main__button"
+          onclick="window.editorFns.onClickToolbarDelete(event)"
+        >
+          <svg
+            width="32"
+            height="32"
+            viewBox="0 0 32 32"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g>
+              <path
+                d="M10 10C10 9.44772 10.4477 9 11 9H21C21.5523 9 22 9.44772 22 10V11H10V10Z"
+              />
+              <rect x="14" y="8" width="4" height="2" rx="1" />
+              <path
+                d="M11 12H21V23C21 23.5523 20.5523 24 20 24H12C11.4477 24 11 23.5523 11 23V12Z"
+              />
+            </g>
+          </svg>
+        </div>
+      </div>
+      <div class="styles-panel toolbar__panel">
+        <h4>Gallery styles</h4>
+
+        <div class="options-gallery-type">
+          <p class="text-small-label">Gallery type</p>
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button
+              type="button"
+              class="btn btn-secondary text-context-label option-grid"
+              onclick="window.galleryFns.onClickGalleryTypeGrid(event)"
+            >
+              &nbsp;&nbsp;&nbsp;Grid&nbsp;&nbsp;&nbsp;
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary text-context-label option-carousel"
+              onclick="window.galleryFns.onClickGalleryTypeCarousel(event)"
+            >
+              Carousel
+            </button>
+          </div>
+        </div>
+
+        <div class="options-grid-layout">
+          <p></p>
+          <p class="text-small-label">Grid layout</p>
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button
+              type="button"
+              class="btn btn-secondary text-context-label option-regular"
+              onclick="window.galleryFns.onClickGridLayoutRegular(event)"
+            >
+              Regular
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary text-context-label option-masonry"
+              onclick="window.galleryFns.onClickGridLayoutMasonry(event)"
+            >
+              Masonry
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="editor">
+      <h1
+        class="undeletable"
+        contenteditable="true"
+        onkeydown="window.editorFns.onKeyDownEditor(event)"
+        onfocus="window.editorFns.onFocusEditor(event)"
+        onblur="window.editorFns.onBlurEditor(event)"
+      ></h1>
+      <p
+        class="undeletable"
+        contenteditable="true"
+        onkeydown="window.editorFns.onKeyDownEditor(event)"
+        onfocus="window.editorFns.onFocusEditor(event)"
+        onblur="window.editorFns.onBlurEditor(event)"
+      ></p>
+      <div id="gallery_widget"></div>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js"></script>
+    <script src="https://unpkg.com/interactjs/dist/interact.min.js"></script>
+    <script src="lightGallery/dist/js/lightgallery-all.min.js"></script>
+    <script type="module" src="editor-lite.js"></script>
+    <script type="module" src="gallery.js"></script>
+  </body>
+</html>
