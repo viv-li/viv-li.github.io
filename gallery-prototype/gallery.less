@@ -57,3 +57,18 @@
     }
   }
 }
+
+// lightGallery.js style overrides
+.lg-thumb {
+  margin-left: auto;
+  margin-right: auto;
+
+  &-item {
+    cursor: pointer !important;
+    border-color: transparent !important;
+
+    &.active {
+      border-color: @blue !important;
+    }
+  }
+}
