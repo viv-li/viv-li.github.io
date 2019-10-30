@@ -285,3 +285,6 @@ window.editorFns = {
 
 document.addEventListener("click", window.editorFns.onClick);
 document.addEventListener("keydown", window.editorFns.onKeyDown);
+window.onload = () => {
+  $("p.text-block.undeletable").focus();
+};
