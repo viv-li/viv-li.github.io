@@ -50,6 +50,7 @@ window.editorFns = {
   },
   onClick: e => {
     window.editorFns.unselectAllWidgets();
+    window.tokenFns.closeTokensPanel();
   },
 
   // For key behaviour around widgets
@@ -97,7 +98,7 @@ window.editorFns = {
   createNewTextBlockAfter: elTextBlock => {
     const $newLine = $(
       `<p
-          class="text-block"
+          class="text-block dropzone"
           contenteditable="true"
           onkeydown="window.editorFns.onKeyDownEditor(event)"
           onkeyup="window.editorFns.onKeyUpEditor(event)"
@@ -106,6 +107,7 @@ window.editorFns = {
         ></p>`
     );
     $newLine.insertAfter(elTextBlock);
+    window.TokenDrag.bindDropzones();
     $newLine.focus();
     return $newLine[0];
   },
@@ -179,11 +181,13 @@ window.editorFns = {
   },
 
   positionWidgetAdder: elTextBlock => {
+    const scrollTop = document.querySelector(".scroll-area").scrollTop;
+    const navHeight = 68;
     const elWA = document.getElementById("widget-adder");
     const { top, left, height } = elTextBlock.getBoundingClientRect();
     // If it's an empty line position quick add beside it
     if (elTextBlock.textContent === "" || elTextBlock.textContent === "+") {
-      elWA.style.top = `${window.scrollY + top + height / 2}px`;
+      elWA.style.top = `${scrollTop - navHeight + top + height / 2}px`;
     }
 
     // If the line with text is the last text block, position underneath
@@ -192,7 +196,7 @@ window.editorFns = {
         .children()
         .last()[0] === elTextBlock
     ) {
-      elWA.style.top = `${window.scrollY + top + height / 2 + 46}px`;
+      elWA.style.top = `${scrollTop - navHeight + top + height / 2 + 46}px`;
     }
 
     // Put it after the last block
@@ -201,9 +205,9 @@ window.editorFns = {
         .children()
         .last()[0];
       const { top, height } = elLastBlock.getBoundingClientRect();
-      elWA.style.top = `${window.scrollY + top + height / 2 + 46}px`;
+      elWA.style.top = `${scrollTop - navHeight + top + height / 2 + 46}px`;
     }
-    elWA.style.left = `${window.scrollX + left - 40}px`;
+    elWA.style.left = `${left - 40}px`;
   },
 
   onBlurEditor: e => {
@@ -283,7 +287,9 @@ window.editorFns = {
   }
 };
 
-document.addEventListener("click", window.editorFns.onClick);
+document
+  .querySelector("main")
+  .addEventListener("click", window.editorFns.onClick);
 document.addEventListener("keydown", window.editorFns.onKeyDown);
 window.onload = () => {
   $("p.text-block.undeletable").focus();

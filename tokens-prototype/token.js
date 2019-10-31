@@ -3,7 +3,7 @@ import { setEndOfContenteditable, insertNodeAtCursor } from "./utils.js";
 window.tokenFns = {
   onClickQuickAddToken: e => {
     const $token = $(
-      `<span class="token incomplete" contenteditable="false">
+      `<span class="token draggable incomplete" contenteditable="false">
         <input class="token__input" type="text" autofocus onkeydown="window.tokenFns.onKeyDownTokenInput(event)">
       </span>`
     );
@@ -16,6 +16,8 @@ window.tokenFns = {
       textBlock.lastChild.textContent += "\u00A0";
     }
     $token.appendTo(textBlock);
+    window.TokenDrag.bindDraggables();
+
     setTimeout(() => {
       $token.find("input")[0].focus();
     }, 0);
@@ -23,12 +25,13 @@ window.tokenFns = {
 
   addTokenAtCursor: () => {
     const $token = $(
-      `<span class="token incomplete" contenteditable="false">
+      `<span class="token draggable incomplete" contenteditable="false">
         <input class="token__input" type="text" autofocus onkeydown="window.tokenFns.onKeyDownTokenInput(event)">
       </span>`
     );
 
     insertNodeAtCursor($token[0]);
+    window.TokenDrag.bindDraggables();
 
     setTimeout(() => {
       $token.find("input")[0].focus();
@@ -77,5 +80,46 @@ window.tokenFns = {
       setEndOfContenteditable(elTextBlock);
     }
     elToken.remove();
+  },
+
+  closeTokensPanel: () => {
+    $("#tokens-panel").addClass("hide");
+    $(".inline-icon-button.tokens").removeClass("active");
+  },
+
+  onClickNavbarTokens: e => {
+    e.stopPropagation();
+    $("#tokens-panel .content-review").removeClass("hide");
+    $("#tokens-panel .content-add").addClass("hide");
+    $("#tokens-panel").toggleClass("hide");
+    $(".inline-icon-button.tokens").toggleClass("active");
+  },
+
+  onClickTokensPanelSwitchView: e => {
+    e.stopPropagation();
+    $("#tokens-panel .content-review").toggleClass("hide");
+    const $addView = $("#tokens-panel .content-add").toggleClass("hide");
+    if (!$addView[0].classList.contains("hide")) {
+      setTimeout(() => {
+        $("#tokens-panel .tokens-filter").focus();
+      }, 0);
+    }
+  },
+
+  onKeyUpTokensPanelFilter: e => {
+    e.stopPropagation();
+    const filterString = e.target.value.toLowerCase();
+    const tokensList = $("#tokens-panel .tokens-list").children("li");
+    tokensList.each(i => {
+      const elLi = tokensList[i];
+      const tokenString = elLi
+        .querySelector(".token")
+        .textContent.toLowerCase();
+      if (tokenString.includes(filterString)) {
+        elLi.classList.remove("hide");
+      } else {
+        elLi.classList.add("hide");
+      }
+    });
   }
 };
