@@ -278,7 +278,7 @@ strong {
 .editor {
   width: 800px;
   margin: auto;
-  padding: 60px 0;
+  padding: 80px 0;
   color: @midnight;
 
   img {
@@ -400,8 +400,17 @@ strong {
   transform: translate(-50%, -100%);
 }
 
+.tooltip--large {
+  .tooltip;
+  .text-description;
+  width: 205px;
+  white-space: normal;
+  text-align: center;
+  padding: 16px;
+}
+
 .tooltip-animation {
-  animation: 0.3s ease tooltip-animation;
+  animation: 1.2s ease tooltip-animation;
   transform-origin: 50%;
   animation-fill-mode: both;
   animation-delay: 0.3s;
@@ -421,7 +430,7 @@ strong {
     transform: translate(-50%, -75%);
     opacity: 0;
   }
-  100% {
+  25% {
     transform: translate(-50%, -100%);
     opacity: 1;
   }
@@ -479,4 +488,27 @@ strong {
 
 .hide {
   display: none !important;
+}
+
+.tabs {
+  border-bottom: 1px solid @grey25;
+  margin: 0 -24px;
+  padding: 0 24px;
+  color: @grey;
+  .text-large-label;
+  
+  .tab {
+    display: inline-block;
+    padding: 8px;
+    cursor: pointer;
+  
+    &:hover {
+      color: @midnight;
+    }
+
+    &.active {
+      border-bottom: 3px solid @blue;
+      color: @midnight;
+    }
+  }
 }

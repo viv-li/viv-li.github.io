@@ -8,10 +8,25 @@
   transition: background-color ease-out 250ms;
   white-space: nowrap;
   max-width: 800px;
-  overflow: hidden;
+  // overflow: hidden;
   text-overflow: ellipsis;
   vertical-align: bottom;
   margin-bottom: -1px;
+  position: relative;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+
+  &.show-hint:after {
+    .tooltip--large;
+    content: "Psst, you can also type “{{” to add a token.";
+    animation-iteration-count: 2;
+    animation-direction: alternate;
+  }
+
+  &.master:after {
+    display: none;
+  }
 
   &.incomplete {
     background-color: fade(@blue, 5%);
@@ -30,19 +45,29 @@
     background: none;
     border: none;
     color: inherit;
+    max-width: 8em;
   }
 
   &.draggable {
     position: relative;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    user-select: none;
     -webkit-user-drag: element;
     cursor: grab !important;
 
     &:hover {
       box-shadow: 0px 2px 4px 0 fade(@midnight, 50%);
     }
+  }
+}
+
+.tokens-list {
+  flex: 1 1 auto;
+  padding: 8px 0;
+  overflow-y: scroll;
+
+  li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+    display: block;
   }
 }
 
@@ -55,26 +80,17 @@
   top: 56px;
   z-index: 3;
 
-  .content-review {
+  .header {
+    margin-bottom: 24px;
+  }
+
+  .content {
     .display(flex);
     .flex-direction(column);
-    height: 100%;
+    height: 404px;
+  }
 
-
-    .header {
-      margin-bottom: 16px;
-
-      .add-tokens-button {
-        .plus-button;
-        position: absolute;
-        top: 24px;
-        right: 24px;
-        width: 36px;
-        height: 36px;
-        z-index: 3;
-      }
-    }
-
+  .content-review {
     .empty-state {
       flex: 1 1 auto;
       border: 2px dashed @grey25;
@@ -89,27 +105,18 @@
       &:before {
         content: url("./assets/images/arrow.svg");
         position: absolute;
-        top: 40px;
-        left: 40%;
+        top: 100px;
+        left: 110px;
       }
     }
   }
 
   .content-add {
-    .display(flex);
-    .flex-direction(column);
-    height: 100%;
-
-    .header {
+    .tokens-filter {
+      position: relative;
       margin-bottom: 16px;
 
-      .back-button {
-        padding-right: 8px;
-        padding-top: 2px;
-        cursor: pointer;
-      }
-
-      .tokens-filter {
+      &__input {
         .display(flex);
         height: 48px;
         width: 100%;
@@ -130,28 +137,42 @@
 
       .search-icon {
         position: absolute;
-        top: 72px;
-        left: 32px;
+        top: 8px;
+        left: 8px;
       }
-
+  
       .close-button {
         cursor: pointer;
         position: absolute;
-        top: 72px;
-        right: 32px;
+        top: 8px;
+        right: 8px;
       }
     }
+  }
+}
 
-    .tokens-list {
-      flex: 1 1 auto;
-      padding: 8px 0;
-      overflow-y: scroll;
+#tokens-typeahead {
+  width: 265px;
+  height: 220px;
+  position: absolute;
+  z-index: 4;
+  .display(flex);
+  .flex-direction(column);
 
-      li {
-        margin-bottom: 8px;
-        line-height: 1.5;
-        display: inline-block;
-      }
+  .tokens-list {
+    padding: 8px;
+    .flex(1 1 auto);
+
+    .token {
+      cursor: pointer;
     }
+  }
+
+  header {
+    border-bottom: 1px solid @grey25;
+    .text-small-label;
+    text-align: center;
+    padding: 8px;
+    color: @grey50;
   }
 }

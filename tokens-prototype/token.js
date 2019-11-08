@@ -4,7 +4,12 @@ window.tokenFns = {
   onClickQuickAddToken: e => {
     const $token = $(
       `<span class="token draggable incomplete" contenteditable="false">
-        <input class="token__input" type="text" autofocus onkeydown="window.tokenFns.onKeyDownTokenInput(event)">
+        <input class="token__input" type="text"
+          onkeydown="window.tokenFns.onKeyDownTokenInput(event)"
+          onkeyup="window.tokenFns.onKeyUpTokenInput(event)"
+          onfocus="window.tokenFns.onFocusTokenInput(event)"
+          onblur="window.tokenFns.onBlurTokenInput(event)"
+        >
       </span>`
     );
     const textBlock = window.lastFocussedLine;
@@ -14,19 +19,34 @@ window.tokenFns = {
       !/\s$/.test(textBlock.lastChild.textContent)
     ) {
       textBlock.lastChild.textContent += "\u00A0";
+    } else if (!textBlock.hasChildNodes()) {
+      textBlock.append(document.createTextNode("\u00A0"));
     }
     $token.appendTo(textBlock);
+
+    $token.addClass("show-hint");
+    setTimeout(() => {
+      $token.removeClass("show-hint");
+    }, 3000);
+
     window.TokenDrag.bindDraggables();
 
     setTimeout(() => {
       $token.find("input")[0].focus();
     }, 0);
+    window.tokenFns.positionTokensTypeahead($token[0]);
+    window.tokenFns.showTokensTypeahead();
   },
 
   addTokenAtCursor: () => {
     const $token = $(
       `<span class="token draggable incomplete" contenteditable="false">
-        <input class="token__input" type="text" autofocus onkeydown="window.tokenFns.onKeyDownTokenInput(event)">
+        <input class="token__input" type="text"
+          onkeydown="window.tokenFns.onKeyDownTokenInput(event)"
+          onkeyup="window.tokenFns.onKeyUpTokenInput(event)"
+          onfocus="window.tokenFns.onFocusTokenInput(event)"
+          onblur="window.tokenFns.onBlurTokenInput(event)"
+        >
       </span>`
     );
 
@@ -36,8 +56,49 @@ window.tokenFns = {
     setTimeout(() => {
       $token.find("input")[0].focus();
     }, 0);
+    window.tokenFns.positionTokensTypeahead($token[0]);
+    window.tokenFns.showTokensTypeahead();
   },
 
+  positionTokensTypeahead: elToken => {
+    const scrollTop = document.querySelector(".scroll-area").scrollTop;
+    const elTypeahead = document.getElementById("tokens-typeahead");
+    const { bottom, left } = elToken.getBoundingClientRect();
+
+    elTypeahead.style.top = `${scrollTop + bottom + 8}px`;
+    elTypeahead.style.left = `${left}px`;
+    window.currentToken = elToken;
+  },
+
+  showTokensTypeahead: () => {
+    $("#tokens-typeahead").removeClass("hide");
+  },
+  hideTokensTypeahead: () => {
+    $("#tokens-typeahead .tokens-list")[0].scrollTo(top);
+    $("#tokens-typeahead").addClass("hide");
+  },
+
+  onMouseDownTypeaheadToken: e => {
+    e.stopPropagation();
+    e.preventDefault();
+    window.currentToken.querySelector("input").value = e.target.textContent;
+    window.tokenFns.completeToken(window.currentToken);
+    window.currentToken = null;
+  },
+
+  onFocusTokenInput: e => {
+    window.tokenFns.showTokensTypeahead();
+    window.currentToken = e.target.closest(".token");
+  },
+  onBlurTokenInput: e => {
+    window.tokenFns.hideTokensTypeahead();
+    window.currentToken = null;
+  },
+  onKeyUpTokenInput: e => {
+    const filterString = e.target.value.toLowerCase();
+    const tokensList = $("#tokens-typeahead .tokens-list").children("li");
+    window.tokenFns.filterTokensList(filterString, tokensList);
+  },
   onKeyDownTokenInput: e => {
     const key = event.key; // const {key} = event; ES6+
     const elToken = e.target.parentElement;
@@ -57,6 +118,7 @@ window.tokenFns = {
       }
     }
   },
+
   completeToken: elToken => {
     const elTokenInput = elToken.querySelector("input");
     const tokenValue = elTokenInput.value.replace(/}$/, "");
@@ -70,6 +132,7 @@ window.tokenFns = {
       $(elSpaceTextNode).insertAfter(elToken);
       setEndOfContenteditable(elSpaceTextNode);
     }
+    window.tokenFns.hideTokensTypeahead();
   },
   removeToken: elToken => {
     const elPrevNode = elToken.previousSibling;
@@ -80,15 +143,18 @@ window.tokenFns = {
       setEndOfContenteditable(elTextBlock);
     }
     elToken.remove();
+    window.tokenFns.hideTokensTypeahead();
   },
 
   closeTokensPanel: () => {
     $("#tokens-panel").addClass("hide");
     $(".inline-icon-button.tokens").removeClass("active");
+    window.tokenFns.onClickTokensPanelTabReview();
   },
 
   onClickNavbarTokens: e => {
     e.stopPropagation();
+    $(".text-block").blur();
     $("#tokens-panel .content-review").removeClass("hide");
     $("#tokens-panel .content-add").addClass("hide");
     $("#tokens-panel").toggleClass("hide");
@@ -103,13 +169,19 @@ window.tokenFns = {
     } else {
       const $tokensSummary = $("#tokens-panel .content-review .tokens-summary");
       $tokensSummary[0].innerHTML = "";
+      const uniqueTokens = [];
       for (let elToken of document.querySelectorAll(".editor .token")) {
-        const elClonedToken = $(elToken)
-          .clone(true)
-          .removeClass("draggable");
-        $("<p/>")
-          .append(elClonedToken)
-          .appendTo($tokensSummary);
+        if (!uniqueTokens.includes(elToken.textContent)) {
+          const elClonedToken = $(elToken)
+            .clone(true)
+            .addClass("master");
+          $("<p/>")
+            .append(elClonedToken)
+            .appendTo($tokensSummary);
+
+          uniqueTokens.push(elToken.textContent);
+          window.TokenDrag.bindDraggables();
+        }
       }
 
       $("#tokens-panel .content-review .empty-state").addClass("hide");
@@ -117,27 +189,32 @@ window.tokenFns = {
     }
   },
 
-  onClickTokensPanelSwitchView: e => {
-    e.stopPropagation();
+  onClickTokensPanelTabReview: e => {
     window.tokenFns.renderTokensReview();
-    $("#tokens-panel .content-review").toggleClass("hide");
-    const $addView = $("#tokens-panel .content-add").toggleClass("hide");
-    // If we're in add view
-    if (!$addView[0].classList.contains("hide")) {
-      setTimeout(() => {
-        $("#tokens-panel .tokens-filter").focus();
-      }, 0);
-    }
+    $("#tokens-panel .content-review").removeClass("hide");
+    $("#tokens-panel .content-add").addClass("hide");
+    $("#tokens-panel .tab-review").addClass("active");
+    $("#tokens-panel .tab-add").removeClass("active");
+  },
+
+  onClickTokensPanelTabAdd: e => {
+    $("#tokens-panel .content-review").addClass("hide");
+    $("#tokens-panel .content-add").removeClass("hide");
+    $("#tokens-panel .tab-review").removeClass("active");
+    $("#tokens-panel .tab-add").addClass("active");
+    setTimeout(() => {
+      $("#tokens-panel .tokens-filter__input").focus();
+    }, 0);
   },
 
   onKeyUpTokensPanelFilter: e => {
     e.stopPropagation();
     const filterString = e.target.value.toLowerCase();
-    window.tokenFns.filterTokensList(filterString);
+    const tokensList = $("#tokens-panel .tokens-list").children("li");
+    window.tokenFns.filterTokensList(filterString, tokensList);
   },
 
-  filterTokensList: filterString => {
-    const tokensList = $("#tokens-panel .tokens-list").children("li");
+  filterTokensList: (filterString, tokensList) => {
     tokensList.each(i => {
       const elLi = tokensList[i];
       const tokenString = elLi
