@@ -24,11 +24,7 @@ window.tokenFns = {
     }
     $token.appendTo(textBlock);
 
-    $token.addClass("show-hint");
-    setTimeout(() => {
-      $token.removeClass("show-hint");
-    }, 3000);
-
+    window.tokenFns.positionAndShowTokensHint($token[0]);
     window.TokenDrag.bindDraggables();
 
     setTimeout(() => {
@@ -134,6 +130,7 @@ window.tokenFns = {
       setEndOfContenteditable(elSpaceTextNode);
     }
     window.tokenFns.hideTokensTypeahead();
+    window.tokenFns.hideTokensTypeahead();
   },
   removeToken: elToken => {
     const elPrevNode = elToken.previousSibling;
@@ -161,6 +158,11 @@ window.tokenFns = {
     $("#tokens-panel").toggleClass("hide");
     $(".inline-icon-button.tokens").toggleClass("active");
     window.tokenFns.renderTokensReview();
+  },
+
+  onClickCloseTokensPanel: e => {
+    e.stopPropagation();
+    window.tokenFns.closeTokensPanel();
   },
 
   renderTokensReview: () => {
@@ -237,5 +239,28 @@ window.tokenFns = {
     setTimeout(() => {
       $("#tokens-panel .tokens-filter").focus();
     }, 0);
+  },
+
+  positionAndShowTokensHint: elToken => {
+    const scrollTop = document.querySelector(".scroll-area").scrollTop;
+    const elHint = document.getElementById("tokens-hint");
+    const { top, height, right } = elToken.getBoundingClientRect();
+
+    elHint.style.top = `${scrollTop + top + height / 2}px`;
+    elHint.style.left = `${right + 16}px`;
+
+    window.tokenFns.showTokensHint();
+  },
+
+  showTokensHint: () => {
+    $("#tokens-hint").removeClass("hide");
+  },
+  hideTokensHint: () => {
+    $("#tokens-hint").addClass("hide");
+  },
+
+  onClickCloseTokensHint: e => {
+    e.stopPropagation();
+    window.tokenFns.hideTokensHint();
   }
 };
