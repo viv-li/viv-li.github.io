@@ -75,25 +75,6 @@
     <div id="tokens-panel" class="panel hide">
       <div class="header">
         <h3>Tokens</h3>
-
-        <div
-          class="close-button right"
-          onclick="window.tokenFns.onClickCloseTokensPanel(event)"
-        >
-          <svg
-            width="32"
-            height="32"
-            viewBox="0 0 32 32"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M23 10.41L21.59 9L16 14.59L10.41 9L9 10.41L14.59 16L9 21.59L10.41 23L16 17.41L21.59 23L23 21.59L17.41 16L23 10.41Z"
-              fill="#81A2B2"
-            />
-          </svg>
-        </div>
-
         <div class="tabs">
           <div
             class="tab tab-review active"
@@ -166,11 +147,6 @@
           <li>
             <span class="token draggable master" contenteditable="false"
               >City</span
-            >
-          </li>
-          <li>
-            <span class="token draggable master" contenteditable="false"
-              >Company</span
             >
           </li>
           <li>
@@ -284,14 +260,6 @@
             contenteditable="false"
             onmousedown="window.tokenFns.onMouseDownTypeaheadToken(event)"
             >City</span
-          >
-        </li>
-        <li>
-          <span
-            class="token"
-            contenteditable="false"
-            onmousedown="window.tokenFns.onMouseDownTypeaheadToken(event)"
-            >Company</span
           >
         </li>
         <li>
@@ -451,7 +419,7 @@
 
     <div id="tokens-hint" class="hide">
       <div class="hint-text">
-        Psst, you can also type "{{" to add a token
+        Next time, try typing "{{" to add a token
       </div>
 
       <div
@@ -677,8 +645,8 @@
     ></script>
     <script src="https://unpkg.com/interactjs/dist/interact.min.js"></script>
 
-    <script src="AnnotationDrag.js"></script>
     <script type="module" src="editor-lite.js"></script>
+    <script src="AnnotationDrag.js"></script>
     <script type="module" src="token.js"></script>
   </body>
 </html>

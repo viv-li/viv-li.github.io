@@ -4,6 +4,8 @@ import {
   insertNodeAtCursor
 } from "./utils.js";
 
+window.userKnowsTokenShortcut = false;
+
 interact(".image-resizer")
   .resizable({
     edges: {
@@ -51,6 +53,7 @@ window.editorFns = {
 
   onClick: e => {
     window.editorFns.unselectAllWidgets();
+    window.tokenFns.closeTokensPanel();
     window.editorFns.closeWidgetAdderMenu();
   },
 
@@ -168,6 +171,7 @@ window.editorFns = {
       e.preventDefault();
       insertNodeAtCursor(document.createTextNode(""), 1);
       window.tokenFns.addTokenAtCursor();
+      window.userKnowsTokenShortcut = true;
     }
 
     window.lastKeyDownTextBlock = elTextBlock;
@@ -177,6 +181,9 @@ window.editorFns = {
   onKeyUpEditor: e => {
     const elTextBlock = e.target.closest(".text-block");
     window.editorFns.positionWidgetAdder(elTextBlock);
+
+    // Hide the token hint if you're typing
+    window.tokenFns.hideTokensHint();
   },
 
   onFocusEditor: e => {
@@ -229,6 +236,7 @@ window.editorFns = {
     }
     const elWA = document.getElementById("widget-adder");
     elWA.classList.toggle("show-menu");
+    window.tokenFns.hideTokensHint();
   },
 
   onClickModalImage: e => {

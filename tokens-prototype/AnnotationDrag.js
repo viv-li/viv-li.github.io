@@ -174,11 +174,17 @@ function AnnotationDrag(args) {
 
     // Insert drop load at target
     if (this.dropLoadNode.classList.contains("master")) {
+      // from the tokens panel
       const clonedNode = this.dropLoadNode.cloneNode(true);
       clonedNode.classList.remove("master");
       range.insertNode(clonedNode);
-      window.tokenFns.positionAndShowTokensHint(clonedNode);
+      window.tokenFns.closeTokensPanel();
+
+      if (!window.userKnowsTokenShortcut) {
+        window.tokenFns.positionAndShowTokensHint(clonedNode);
+      }
     } else {
+      // dragging within the oage
       range.insertNode(this.dropLoadNode);
       window.tokenFns.hideTokensHint();
     }

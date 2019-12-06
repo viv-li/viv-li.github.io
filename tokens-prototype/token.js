@@ -3,7 +3,7 @@ import { setEndOfContenteditable, insertNodeAtCursor } from "./utils.js";
 window.tokenFns = {
   onClickQuickAddToken: e => {
     const $token = $(
-      `<span class="token draggable incomplete" contenteditable="false">
+      `<span class="token draggable incomplete quick-add" contenteditable="false">
         <input class="token__input" type="text"
           onkeydown="window.tokenFns.onKeyDownTokenInput(event)"
           onkeyup="window.tokenFns.onKeyUpTokenInput(event)"
@@ -24,12 +24,12 @@ window.tokenFns = {
     }
     $token.appendTo(textBlock);
 
-    window.tokenFns.positionAndShowTokensHint($token[0]);
     window.TokenDrag.bindDraggables();
 
     setTimeout(() => {
       $token.find("input")[0].focus();
     }, 0);
+
     window.tokenFns.positionAndShowTokensTypeahead($token[0]);
   },
 
@@ -101,10 +101,13 @@ window.tokenFns = {
     const elToken = e.target.parentElement;
 
     // Completing the token
-    if (key === "Enter" || (key === "}" && e.target.value.slice(-1) === "}")) {
+    if (key === "Enter") {
       e.preventDefault();
       e.stopPropagation();
-      window.tokenFns.completeToken(elToken);
+      if (window.tokenFns.isValidToken(e.target.value)) {
+        window.tokenFns.completeToken(elToken);
+      } else {
+      }
 
       // Removing the token
     } else if (key === "Backspace" || key === "Delete") {
@@ -130,7 +133,12 @@ window.tokenFns = {
       setEndOfContenteditable(elSpaceTextNode);
     }
     window.tokenFns.hideTokensTypeahead();
-    window.tokenFns.hideTokensTypeahead();
+    if (
+      elToken.classList.contains("quick-add") &&
+      !window.userKnowsTokenShortcut
+    ) {
+      window.tokenFns.positionAndShowTokensHint(elToken);
+    }
   },
   removeToken: elToken => {
     const elPrevNode = elToken.previousSibling;
@@ -160,20 +168,18 @@ window.tokenFns = {
     window.tokenFns.renderTokensReview();
   },
 
-  onClickCloseTokensPanel: e => {
-    e.stopPropagation();
-    window.tokenFns.closeTokensPanel();
-  },
-
   renderTokensReview: () => {
-    if ($(".editor").find(".token").length === 0) {
+    if ($(".editor").find(".token:not(.incomplete)").length === 0) {
       $("#tokens-panel .content-review .empty-state").removeClass("hide");
       $("#tokens-panel .content-review .tokens-summary").addClass("hide");
     } else {
       const $tokensSummary = $("#tokens-panel .content-review .tokens-summary");
       $tokensSummary[0].innerHTML = "";
       const uniqueTokens = [];
-      for (let elToken of document.querySelectorAll(".editor .token")) {
+      const tokenCount = [];
+      for (let elToken of document.querySelectorAll(
+        ".editor .token:not(.incomplete)"
+      )) {
         if (!uniqueTokens.includes(elToken.textContent)) {
           const elClonedToken = $(elToken)
             .clone(true)
@@ -183,8 +189,23 @@ window.tokenFns = {
             .appendTo($tokensSummary);
 
           uniqueTokens.push(elToken.textContent);
+          tokenCount.push(1);
           window.TokenDrag.bindDraggables();
+        } else {
+          const index = uniqueTokens.indexOf(elToken.textContent);
+          tokenCount[index] += 1;
         }
+      }
+
+      const summaryList = $(
+        "#tokens-panel .content-review .tokens-summary"
+      ).children("p");
+      for (let i = 0; i < tokenCount.length; i++) {
+        $(
+          `<span class="token-count">
+            ${tokenCount[i]} use${tokenCount[i] > 1 ? "s" : ""}
+          </span>`
+        ).appendTo(summaryList[i]);
       }
 
       $("#tokens-panel .content-review .empty-state").addClass("hide");
@@ -229,6 +250,19 @@ window.tokenFns = {
         elLi.classList.add("hide");
       }
     });
+  },
+
+  isValidToken: inputString => {
+    const tokensList = $("#tokens-panel .tokens-list").children("li");
+    let isValid = false;
+    tokensList.each(i => {
+      const elLi = tokensList[i];
+      const tokenString = elLi.querySelector(".token").textContent;
+      if (inputString === tokenString) {
+        isValid = true;
+      }
+    });
+    return isValid;
   },
 
   onClickClearTokensFilter: e => {

@@ -2,7 +2,6 @@
   display: inline-block;
   background: fade(@blue, 25%);
   padding: 0 8px;
-  min-width: 16px;
   border-radius: 96px;
   border: 1px solid fade(@blue, 50%);
   transition: background-color ease-out 250ms;
@@ -21,20 +20,22 @@
     background-color: fade(@blue, 5%);
 
     &:before {
-      content: "{{";
-      margin-left: -16px;
+      content: url("./assets/icons/search.svg");
+      position: absolute;
+      left: 8px;
+      height: 100%;
     }
 
     padding-left: 24px;
   }
 
   &__input {
-    margin-left: -6px;
+    margin-left: 16px;
     outline: none;
     background: none;
     border: none;
     color: inherit;
-    max-width: 8em;
+    max-width: 10em;
   }
 
   &.draggable {
@@ -50,7 +51,6 @@
 
 .tokens-list {
   flex: 1 1 auto;
-  padding: 8px 0;
   overflow-y: scroll;
 
   li {
@@ -67,14 +67,7 @@
   position: absolute;
   right: 8px;
   top: 56px;
-  z-index: 3;
-
-  .close-button {
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    cursor: pointer;
-  }
+  z-index: 5;
 
   .header {
     margin-bottom: 24px;
@@ -83,7 +76,7 @@
   .content {
     .display(flex);
     .flex-direction(column);
-    height: 404px;
+    height: 420px;
   }
 
   .content-review {
@@ -105,9 +98,36 @@
         left: 110px;
       }
     }
+
+    .tokens-summary {
+      margin: -24px;
+      padding: 8px 0;
+
+      p {
+        padding: 8px 16px;
+        margin: 0;
+        overflow: hidden;
+
+        .token-count {
+          .text-small-label;
+          transform: translateX(150%);
+          float: right;
+          line-height: 32px;
+          transition: transform 150ms ease-out;
+        }
+
+        &:hover {
+          .token-count {
+            transform: none;
+          }
+        }
+      }
+    }
   }
 
   .content-add {
+    margin: -8px;
+
     .tokens-filter {
       position: relative;
       margin-bottom: 16px;
