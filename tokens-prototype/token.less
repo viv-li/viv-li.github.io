@@ -1,10 +1,10 @@
 .token {
   display: inline-block;
   background: fade(@blue, 25%);
-  padding: 0 8px;
+  padding: 0 0.33em;
   border-radius: 96px;
   border: 1px solid fade(@blue, 50%);
-  transition: background-color ease-out 250ms;
+  transition: all ease-out 150ms;
   white-space: nowrap;
   max-width: 800px;
   // overflow: hidden;
@@ -18,19 +18,27 @@
 
   &.incomplete {
     background-color: fade(@blue, 5%);
+    display: inline-flex;
+    align-items: center;
 
     &:before {
-      content: url("./assets/icons/search.svg");
-      position: absolute;
-      left: 8px;
-      height: 100%;
+      content: "";
+      background: url("./assets/icons/search.svg");
+      width: 16px;
+      height: 16px;
     }
 
-    padding-left: 24px;
+    &.draggable:hover {
+      box-shadow: none;
+    }
+  }
+
+  &.selected {
+    background-color: fade(@blue, 50%);
   }
 
   &__input {
-    margin-left: 16px;
+    margin-left: 4px;
     outline: none;
     background: none;
     border: none;
@@ -44,7 +52,7 @@
     cursor: grab !important;
 
     &:hover {
-      box-shadow: 0px 2px 4px 0 fade(@midnight, 50%);
+      box-shadow: inset 0px -0.25em 0.5em 0 fade(@blue, 50%);
     }
   }
 }

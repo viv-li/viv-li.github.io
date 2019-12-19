@@ -94,7 +94,7 @@ window.tokenFns = {
   onKeyUpTokenInput: e => {
     const filterString = e.target.value.toLowerCase();
     const tokensList = $("#tokens-typeahead .tokens-list").children("li");
-    window.tokenFns.filterTokensList(filterString, tokensList);
+    window.tokenFns.filterTokensList(filterString, tokensList, true);
   },
   onKeyDownTokenInput: e => {
     const key = event.key; // const {key} = event; ES6+
@@ -104,7 +104,9 @@ window.tokenFns = {
     if (key === "Enter") {
       e.preventDefault();
       e.stopPropagation();
-      if (window.tokenFns.isValidToken(e.target.value)) {
+      const matchingToken = $("#tokens-typeahead .token.selected")[0];
+      if (matchingToken !== undefined) {
+        e.target.value = matchingToken.textContent;
         window.tokenFns.completeToken(elToken);
       } else {
       }
@@ -238,31 +240,22 @@ window.tokenFns = {
     window.tokenFns.filterTokensList(filterString, tokensList);
   },
 
-  filterTokensList: (filterString, tokensList) => {
+  filterTokensList: (filterString, tokensList, highlightOnMatch) => {
+    highlightOnMatch = highlightOnMatch || false;
     tokensList.each(i => {
       const elLi = tokensList[i];
-      const tokenString = elLi
-        .querySelector(".token")
-        .textContent.toLowerCase();
+      const elToken = elLi.querySelector(".token");
+      elToken.classList.remove("selected");
+      const tokenString = elToken.textContent.toLowerCase();
       if (tokenString.includes(filterString)) {
         elLi.classList.remove("hide");
+        if (highlightOnMatch && tokenString === filterString) {
+          elLi.querySelector(".token").classList.add("selected");
+        }
       } else {
         elLi.classList.add("hide");
       }
     });
-  },
-
-  isValidToken: inputString => {
-    const tokensList = $("#tokens-panel .tokens-list").children("li");
-    let isValid = false;
-    tokensList.each(i => {
-      const elLi = tokensList[i];
-      const tokenString = elLi.querySelector(".token").textContent;
-      if (inputString === tokenString) {
-        isValid = true;
-      }
-    });
-    return isValid;
   },
 
   onClickClearTokensFilter: e => {
