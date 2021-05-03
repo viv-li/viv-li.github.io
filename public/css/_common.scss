@@ -10,8 +10,7 @@ html {
 
 body {
 	margin: 0; // Remove the margin in all browsers
-
-	font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: "Epilogue", sans-serif;
 	color: #404040;
 	overflow: auto;
 	display: flex;
@@ -87,44 +86,46 @@ b, strong {
 /* Interface bar
 ---------------------------------------------------------------------- */
 .bar {
-	background-color: $interface-gray;
+	background-color: $text-color;
+	color: white;
 	height: $mix-bar-height;
 	position: relative;
 	white-space: nowrap;
 	
 	h3 {
+		font-weight: 500;
 		font-family: "Inconsolata", monospace;
 		line-height: $mix-bar-height;
 		font-size: 0.9em;
 		margin: 0;
-		margin-left: 60px;
+		margin-left: 54px;
 	}
 
 	/** Interface dots */
 	i {
-		width: 12px;
-		height: 12px;
+		width: 10px;
+		height: 10px;
 		border-radius: 50%;
 		position: absolute;
-		top: 6px;
-		left: 6px;
+		top: 7px;
+		left: 7px;
 		background-color: $interface-red;
 
 		&:before, &:after {
 			content: '';
 			display: inline-block;
-			width: 12px;
-			height: 12px;
+			width: 10px;
+			height: 10px;
 			border-radius: 50%;
 			position: absolute;
 		}
 		&:before {
 			background-color: $interface-yellow;
-			left: 16px;
+			left: 14px;
 		}
 		&:after {
 			background-color: $interface-green;
-			left: 32px;
+			left: 28px;
 		}
 	}
 }
@@ -163,7 +164,7 @@ footer {
 		}
 	}
 
-	@include for-tablet-portrait-down {
+	@include for-tablet-landscape-down {
 		text-align: center;
 
 		p {
