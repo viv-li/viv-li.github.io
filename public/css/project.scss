@@ -3,124 +3,122 @@
 @import "common";
 
 .content {
-	margin-left: auto;
-	margin-right: auto;
-	@include for-mobile-only {
-		max-width: 420px;
-	}
+  margin-left: auto;
+  margin-right: auto;
+  @include for-mobile-only {
+    max-width: 420px;
+  }
 
-	@include for-tablet-portrait-down {
-		padding: 30px;
-	}
+  @include for-tablet-portrait-down {
+    padding: 30px;
+  }
 
-	@include for-tablet-portrait-up {
-		max-width: 540px;
-	}
-	@include for-tablet-landscape-up {
-		max-width: 660px;
-	}
+  @include for-tablet-portrait-up {
+    max-width: 540px;
+  }
+  @include for-tablet-landscape-up {
+    max-width: 660px;
+  }
 }
 
 a.back-home {
-	position: fixed;
-	z-index: 10;
-	font-size: 2rem;
-	color: $brand-primary;
-	overflow: hidden;
-	transition: height 300ms;
-	-webkit-tap-highlight-color: transparent;
-
+  position: fixed;
+  z-index: 10;
+  font-size: 2rem;
+  color: $brand-primary;
+  overflow: hidden;
+  transition: height 300ms;
+  -webkit-tap-highlight-color: transparent;
 
   &:before {
     position: absolute;
-		top: 0;
-		left: 0;
+    top: 0;
+    left: 0;
     height: 100%;
     color: $text-color;
     overflow: hidden;
-    content: url('/public/images/back-home-icon.svg');
+    content: url("/public/images/back-home-icon.svg");
     transition: height 300ms;
   }
-  
+
   &:hover {
-      &:before {
+    &:before {
       height: 0;
     }
   }
 
   &:active,
   &:focus {
-  	outline: none;
-  	&:before {
-  		height: 0;
-    	transition: height 300ms;
-  	}
+    outline: none;
+    &:before {
+      height: 0;
+      transition: height 300ms;
+    }
   }
 
   @include for-mobile-only {
-  	top: 1rem;
-  	left: 3px;
+    top: 1rem;
+    left: 3px;
   }
   @include for-tablet-portrait-up {
-  	top: 1.4rem;
-		left: 1rem;
+    top: 1.4rem;
+    left: 1rem;
   }
-  @include for-tablet-landscape-up {	
-		top: 2.6rem;
-		left: 1.6rem;
+  @include for-tablet-landscape-up {
+    top: 2.6rem;
+    left: 1.6rem;
   }
 }
 
 h1 {
-	font-family: "Inconsolata", monospace;
-	@include for-mobile-only {
-		font-size: 1.6em;
-		margin-top: 2.6rem;
-	}
-	@include for-tablet-portrait-up {
-		font-size: 2.0em;
-	}
-	@include for-tablet-landscape-up {
-		font-size: 2.8em;
-	}
+  @include for-mobile-only {
+    font-size: 1.6em;
+    margin-top: 2.6rem;
+  }
+  @include for-tablet-portrait-up {
+    font-size: 2em;
+  }
+  @include for-tablet-landscape-up {
+    font-size: 2.8em;
+  }
 }
 
 h2 {
-	font-weight: normal;
-	margin-bottom: 1.4rem;
+  font-weight: normal;
+  margin-bottom: 1.4rem;
 
-	@include for-mobile-only {
-		font-size: 1.0em;
-	}
-	@include for-tablet-portrait-up {
-		font-size: 1.0em;
-	}
-	@include for-tablet-landscape-up {
-		font-size: 1.4em;
-	}
+  @include for-mobile-only {
+    font-size: 1em;
+  }
+  @include for-tablet-portrait-up {
+    font-size: 1em;
+  }
+  @include for-tablet-landscape-up {
+    font-size: 1.4em;
+  }
 }
 
 button:disabled {
-	font-size: 1rem;
-	font-weight: 400;
-	font-family: inherit;
-	text-decoration: none;
-	background-color: $interface-gray;
-	color: #888;
-	border: none;
-	display: inline-block;
-	padding: 1em;
-	cursor: default;
+  font-size: 1rem;
+  font-weight: 400;
+  font-family: inherit;
+  text-decoration: none;
+  background-color: $interface-gray;
+  color: #888;
+  border: none;
+  display: inline-block;
+  padding: 1em;
+  cursor: default;
 }
 
 .slider-container {
-	margin: 2rem 0 3.5rem 0;
-	border: 2px solid $interface-gray;
-	margin-left: -2px;
-	margin-right: -2px;
+  margin: 2rem 0 3.5rem 0;
+//   border: 2px solid $text-color;
+  margin-left: -2px;
+  margin-right: -2px;
 }
 
 ul {
-	list-style-type: square;
-	padding-left: 18px;
+  list-style-type: square;
+  padding-left: 18px;
 }

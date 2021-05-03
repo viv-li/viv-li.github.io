@@ -15,6 +15,9 @@
   @media (min-width: 1800px) { @content; }
 }
 
+@mixin for-tablet-portrait-down {
+  @media (max-width: 699px) { @content; }
+}
 @mixin for-tablet-landscape-down {
   @media (max-width: 1199px) { @content; }
 }

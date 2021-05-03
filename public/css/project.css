@@ -13,7 +13,7 @@ html {
 
 body {
   margin: 0;
-  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Epilogue", sans-serif;
   color: #404040;
   overflow: auto;
   display: -webkit-box;
@@ -42,7 +42,7 @@ main {
 
 a {
   background-color: transparent;
-  color: #0556E6;
+  color: #d51083;
   font-weight: bolder;
   text-decoration: none;
   -webkit-transition: color 300ms;
@@ -50,7 +50,7 @@ a {
 }
 
 a:hover {
-  color: #0556E6;
+  color: #d51083;
   -webkit-transition: color 300ms;
   transition: color 300ms;
 }
@@ -60,14 +60,14 @@ a.button {
   font-weight: 600;
   font-family: inherit;
   text-decoration: none;
-  background-color: #404040;
+  background-color: #333333;
   color: white;
   border: none;
   display: inline-block;
   padding: 1em;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0.2);
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(49.9%, #0556E6), color-stop(50%, transparent));
-  background-image: linear-gradient(to top, #0556E6 49.9%, transparent 50%);
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(49.9%, #d51083), color-stop(50%, transparent));
+  background-image: linear-gradient(to top, #d51083 49.9%, transparent 50%);
   background-size: 100% 200%;
   background-position: top;
   -webkit-transition: background-position 300ms;
@@ -112,54 +112,57 @@ b, strong {
 /* Interface bar
 ---------------------------------------------------------------------- */
 .bar {
-  background-color: #EEEEEE;
+  background-color: #333333;
+  color: white;
   height: 24px;
   position: relative;
   white-space: nowrap;
+  border-radius: 8px 8px 0 0;
   /** Interface dots */
 }
 
 .bar h3 {
+  font-weight: 500;
   font-family: "Inconsolata", monospace;
   line-height: 24px;
   font-size: 0.9em;
   margin: 0;
-  margin-left: 60px;
+  margin-left: 54px;
 }
 
 .bar i {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   position: absolute;
-  top: 6px;
-  left: 6px;
+  top: 7px;
+  left: 7px;
   background-color: #FF635B;
 }
 
 .bar i:before, .bar i:after {
   content: '';
   display: inline-block;
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   position: absolute;
 }
 
 .bar i:before {
   background-color: #FFBD2E;
-  left: 16px;
+  left: 14px;
 }
 
 .bar i:after {
   background-color: #29CE42;
-  left: 32px;
+  left: 28px;
 }
 
 /* Footer
 ---------------------------------------------------------------------- */
 footer {
-  background-color: #404040;
+  background-color: #333333;
   color: white;
   margin-top: 2rem;
 }
@@ -190,7 +193,7 @@ footer .social-links a i {
   padding: 1rem;
 }
 
-@media (max-width: 899px) {
+@media (max-width: 1199px) {
   footer {
     text-align: center;
   }
@@ -203,8 +206,8 @@ footer .social-links a i {
 }
 
 .no-touch .social-links i {
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(49.9%, #0556E6), color-stop(50%, transparent));
-  background-image: linear-gradient(to top, #0556E6 49.9%, transparent 50%);
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(49.9%, #d51083), color-stop(50%, transparent));
+  background-image: linear-gradient(to top, #d51083 49.9%, transparent 50%);
   background-size: 100% 200%;
   background-position: top;
   -webkit-transition: background-position 300ms;
@@ -231,7 +234,7 @@ footer .social-links a i {
   }
 }
 
-@media (max-width: 899px) {
+@media (max-width: 699px) {
   .content {
     padding: 30px;
   }
@@ -253,7 +256,7 @@ a.back-home {
   position: fixed;
   z-index: 10;
   font-size: 2rem;
-  color: #0556E6;
+  color: #d51083;
   overflow: hidden;
   -webkit-transition: height 300ms;
   transition: height 300ms;
@@ -265,7 +268,7 @@ a.back-home:before {
   top: 0;
   left: 0;
   height: 100%;
-  color: #404040;
+  color: #333333;
   overflow: hidden;
   content: url("/public/images/back-home-icon.svg");
   -webkit-transition: height 300ms;
@@ -307,10 +310,6 @@ a.back-home:active:before, a.back-home:focus:before {
   }
 }
 
-h1 {
-  font-family: "Inconsolata", monospace;
-}
-
 @media (max-width: 699px) {
   h1 {
     font-size: 1.6em;
@@ -320,7 +319,7 @@ h1 {
 
 @media (min-width: 700px) {
   h1 {
-    font-size: 2.0em;
+    font-size: 2em;
   }
 }
 
@@ -337,13 +336,13 @@ h2 {
 
 @media (max-width: 699px) {
   h2 {
-    font-size: 1.0em;
+    font-size: 1em;
   }
 }
 
 @media (min-width: 700px) {
   h2 {
-    font-size: 1.0em;
+    font-size: 1em;
   }
 }
 
@@ -368,7 +367,6 @@ button:disabled {
 
 .slider-container {
   margin: 2rem 0 3.5rem 0;
-  border: 2px solid #EEEEEE;
   margin-left: -2px;
   margin-right: -2px;
 }
