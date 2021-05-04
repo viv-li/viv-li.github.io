@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Portfolio - Vivian Li</title>
+    <meta name="author" content="Vivian Li" />
+    <meta
+      name="description"
+      content="Vivian Li is a product designer and front end web developer based in Naarm (Melbourne)."
+    />
+
+    <meta property="og:title" content="Portfolio - Vivian Li" />
+    <meta
+      property="og:description"
+      content="Vivian Li is a product designer and front end web developer based in Naarm (Melbourne)."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://viv-li.github.io/portfolio/prototyping.html" />
+    <meta property="og:image" content="/public/images/screenshots/prototyping-0.png" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#0556e6" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@500;700&amp;display=swap" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+      integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+      crossorigin="anonymous"
+    />
+    <link href="/public/css/project.css" rel="stylesheet" />
+
+    <!-- Load the cross-browser polyfill just if it is needed -->
+    <script>
+      ("import" in document.createElement("link") && document.head.createShadowRoot) ||
+        document.write(
+          "<script src='https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.24/webcomponents.min.js'><\/script>"
+        );
+    </script>
+    <link rel="import" href="/portfolio/awesome-slider.html" />
+  </head>
+  <body>
+    <a class="back-home" href="/" title="Back to home">
+      <img src="/public/images/back-home-active-icon.svg" />
+    </a>
+    <main class="content">
+      <h1>Building Functional Prototypes</h1>
+      <h2>
+        <b>2019 &ndash; 2020:</b>
+        I was originally hired as a
+        <b>Functional Prototyper</b>
+        at Qwilr and moved into a broader role as a
+        <b>Product Designer</b>
+        after six months. In both roles, I prototyped my own and other designers’ ideas so we could quickly validate
+        them with both online user testers and customers earlier in the design process.
+      </h2>
+      <!-- <a class="button" href="https://qwilr.com" target="_blank">
+        Visit the website
+        <i class="fas fa-external-link-alt"></i>
+      </a> -->
+
+      <div class="slider-container">
+        <div class="bar">
+          <i></i>
+        </div>
+        <awesome-slider height="x56%" pre-image="/public/images/loading-icon.svg" autostart="true" bullets="true">
+          <item source="/public/images/screenshots/prototyping-0.png"></item>
+          <item source="/public/images/screenshots/prototyping-1.png"></item>
+          <item source="/public/images/screenshots/prototyping-2.png"></item>
+          <item source="/public/images/screenshots/prototyping-3.png"></item>
+          <item source="/public/images/screenshots/prototyping-4.png"></item>
+          <item source="/public/images/screenshots/prototyping-5.png"></item>
+        </awesome-slider>
+      </div>
+
+      <h3>Description</h3>
+      <p>
+        Qwilr gives everyone the power to create beautiful web documents. I designed and prototyped “widgets” to extend
+        the power and flexibility of the Qwilr editor, while maintaining a simple “lego-like” experience for the user.
+      </p>
+
+      <h3>Links</h3>
+      <p>The links below will allow you to play with the interactive prototypes I built in my time at Qwilr:</p>
+
+      <ol>
+        <li>
+          <a href="/prototypes/sbs-v2-prototype" target="_blank">
+            Two Columns widget
+            <i class="fas fa-external-link-alt"></i>
+          </a>
+        </li>
+        <li>
+          <a href="/prototypes/gallery-prototype" target="_blank">
+            Image Gallery widget
+            <i class="fas fa-external-link-alt"></i>
+          </a>
+        </li>
+        <li>
+          <a href="/prototypes/tokens-prototype" target="_blank">
+            Template Customisation "Tokens"
+            <i class="fas fa-external-link-alt"></i>
+          </a>
+        </li>
+        <li>
+          <a href="/prototypes/dashboard-prototype" target="_blank">
+            Dashboard Folders
+            <i class="fas fa-external-link-alt"></i>
+          </a>
+        </li>
+        <li>Comments and Notifications (link not available as prototyping was done in-app)</li>
+      </ol>
+
+      <h3>Technologies</h3>
+      <p>Technologies and skills that I got involved with on this project.</p>
+      <ul></ul>
+    </main>
+
+    <footer>
+      <div class="content">
+        <p>Vivian Li is a web developer & designer based in Sydney.</p>
+        <div class="social-links">
+          <a class="social-link" href="mailto:l.vivian.93@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+          <a class="social-link" href="https://linkedin.com/in/vivianli09/" target="_blank">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a class="social-link" href="https://github.com/viv-li" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/public/js/project-min.js"></script>
+  </body>
+</html>
