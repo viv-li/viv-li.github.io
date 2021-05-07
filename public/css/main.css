@@ -1,6 +1,6 @@
 * {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
@@ -21,8 +21,8 @@ body {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   min-height: 100vh;
   opacity: 1;
 }
@@ -31,13 +31,37 @@ body {
 .js-loading *:before,
 .js-loading *:after {
   -webkit-animation-play-state: paused !important;
-          animation-play-state: paused !important;
+  animation-play-state: paused !important;
   opacity: 0;
 }
 
 main {
   display: block;
   margin-bottom: auto;
+}
+
+.content {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 699px) {
+  .content {
+    max-width: 420px;
+    padding: 20px;
+  }
+}
+
+@media (min-width: 700px) {
+  .content {
+    max-width: 660px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .content {
+    max-width: 1000px;
+  }
 }
 
 a {
@@ -66,7 +90,13 @@ a.button {
   display: inline-block;
   padding: 1em;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0.2);
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(49.9%, #d51083), color-stop(50%, transparent));
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(49.9%, #d51083),
+    color-stop(50%, transparent)
+  );
   background-image: linear-gradient(to top, #d51083 49.9%, transparent 50%);
   background-size: 100% 200%;
   background-position: top;
@@ -91,9 +121,9 @@ button {
   -webkit-appearance: none;
   -webkit-border-radius: 0;
   -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 button:focus {
@@ -105,7 +135,8 @@ button::-moz-focus-inner {
   border: 0;
 }
 
-b, strong {
+b,
+strong {
   font-weight: bolder;
 }
 
@@ -137,11 +168,12 @@ b, strong {
   position: absolute;
   top: 7px;
   left: 7px;
-  background-color: #FF635B;
+  background-color: #ff635b;
 }
 
-.bar i:before, .bar i:after {
-  content: '';
+.bar i:before,
+.bar i:after {
+  content: "";
   display: inline-block;
   width: 10px;
   height: 10px;
@@ -150,12 +182,12 @@ b, strong {
 }
 
 .bar i:before {
-  background-color: #FFBD2E;
+  background-color: #ffbd2e;
   left: 14px;
 }
 
 .bar i:after {
-  background-color: #29CE42;
+  background-color: #29ce42;
   left: 28px;
 }
 
@@ -206,7 +238,13 @@ footer .social-links a i {
 }
 
 .no-touch .social-links i {
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(49.9%, #d51083), color-stop(50%, transparent));
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(49.9%, #d51083),
+    color-stop(50%, transparent)
+  );
   background-image: linear-gradient(to top, #d51083 49.9%, transparent 50%);
   background-size: 100% 200%;
   background-position: top;
@@ -221,30 +259,6 @@ footer .social-links a i {
   background-position: bottom;
   -webkit-transition: background-position 300ms;
   transition: background-position 300ms;
-}
-
-.content {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-@media (max-width: 699px) {
-  .content {
-    max-width: 420px;
-    padding: 20px;
-  }
-}
-
-@media (min-width: 700px) {
-  .content {
-    max-width: 660px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .content {
-    max-width: 1000px;
-  }
 }
 
 /* Header
@@ -413,19 +427,26 @@ h2 {
 .filter.mixitup-control-active {
   color: white;
   background-size: 100% 200%;
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(49.9%, #d51083), color-stop(50%, transparent));
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(49.9%, #d51083),
+    color-stop(50%, transparent)
+  );
   background-image: linear-gradient(to top, #d51083 49.9%, transparent 50%);
   background-position: bottom;
   -webkit-transition: background-position 300ms, color 300ms ease;
   transition: background-position 300ms, color 300ms ease;
 }
 
-.filter:focus, .filter:active {
+.filter:focus,
+.filter:active {
   outline: none;
 }
 
 .no-touch .filter:after {
-  content: '';
+  content: "";
   display: inline-block;
   width: 0;
   height: 5px;
@@ -471,19 +492,21 @@ h2 {
   }
 }
 
-.mix, .gap {
+.mix,
+.gap {
   display: inline-block;
   width: 320px;
 }
 
 @media (max-width: 699px) {
-  .mix, .gap {
+  .mix,
+  .gap {
     width: 100%;
   }
 }
 
 .mix {
-  background-color: #EEEEEE;
+  background-color: #eeeeee;
   line-height: 1.3;
   vertical-align: top;
   margin-bottom: 1.2rem;
@@ -491,7 +514,7 @@ h2 {
   position: relative;
   border-radius: 8px;
   -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
-          box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
   cursor: pointer;
   -webkit-transition: all 300ms ease;
   transition: all 300ms ease;
@@ -502,59 +525,12 @@ h2 {
   width: 100%;
 }
 
-.mix .overlay {
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
-  color: white;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  position: absolute;
-  top: 100%;
-  -webkit-transition: top 300ms ease;
-  transition: top 300ms ease;
-}
-
-.mix .overlay ul {
-  list-style-type: none;
-  text-align: left;
-  line-height: 1.4;
-  padding: 0 1rem;
-  margin-top: 0.6rem;
-  margin-bottom: 0;
-}
-
-.mix .overlay ul li {
-  display: inline-block;
-  font-family: "Inconsolata", monospace;
-  text-transform: uppercase;
-  background-color: #333333;
-  padding: 0.25rem;
-  line-height: 0.7;
-  white-space: nowrap;
-}
-
-.mix .overlay p {
-  margin: auto;
-  padding-bottom: 24px;
-  text-align: center;
-}
-
-.mix .overlay p .button {
-  padding: 0.75rem;
-}
-
 .no-touch .mix:hover,
 .mix.odd-touch {
   -webkit-transform: scale(1.05);
-          transform: scale(1.05);
+  transform: scale(1.05);
   -webkit-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4);
-          box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4);
   opacity: 0.8;
   -webkit-transition: all 300ms ease;
   transition: all 300ms ease;

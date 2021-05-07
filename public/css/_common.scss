@@ -1,23 +1,24 @@
-* { box-sizing: border-box }
+* {
+  box-sizing: border-box;
+}
 
 html {
   line-height: 1.5; // Correct the line height in all browsers.
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%; // Prevent adjustments of font size after orientation changes in iOS.
-	scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-	margin: 0; // Remove the margin in all browsers
-	font-family: "Epilogue", sans-serif;
-	color: #404040;
-	overflow: auto;
-	display: flex;
-	flex-direction: column;
-	min-height: 100vh;
-	opacity: 1;
-
+  margin: 0; // Remove the margin in all browsers
+  font-family: "Epilogue", sans-serif;
+  color: #404040;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  opacity: 1;
 }
 .js-loading *,
 .js-loading *:before,
@@ -27,8 +28,23 @@ body {
 }
 
 main {
-	 display: block; //Render the `main` element consistently in IE.
-	 margin-bottom: auto;
+  display: block; //Render the `main` element consistently in IE.
+  margin-bottom: auto;
+}
+
+.content {
+  margin-left: auto;
+  margin-right: auto;
+  @include for-mobile-only {
+    max-width: 420px;
+    padding: 20px;
+  }
+  @include for-tablet-portrait-up {
+    max-width: 660px;
+  }
+  @include for-desktop-up {
+    max-width: 1000px;
+  }
 }
 
 a {
@@ -39,145 +55,147 @@ a {
   transition: color 300ms;
 
   &:hover {
- 		color: $brand-primary;
-  	transition: color 300ms;
-  };
+    color: $brand-primary;
+    transition: color 300ms;
+  }
 }
 
 a.button {
-	font-size: 1rem;
-	font-weight: 600;
-	font-family: inherit;
-	text-decoration: none;
-	background-color: $text-color;
-	color: white;
-	border: none;
-	display: inline-block;
-	padding: 1em;
-	-webkit-tap-highlight-color: rgba(0, 0, 0, 0.2);
-	@include button-hover($brand-primary, white);
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: inherit;
+  text-decoration: none;
+  background-color: $text-color;
+  color: white;
+  border: none;
+  display: inline-block;
+  padding: 1em;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.2);
+  @include button-hover($brand-primary, white);
 }
 
 button {
-    background: transparent;
-    border-radius: 0;
-    border: 0;
-    padding: 0;
+  background: transparent;
+  border-radius: 0;
+  border: 0;
+  padding: 0;
 
-    -webkit-appearance: none;
-    -webkit-border-radius: 0;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
 
-    user-select: none;
+  user-select: none;
 }
 
 button:focus {
-    outline: 0 none;
+  outline: 0 none;
 }
 
 button::-moz-focus-inner {
-    padding: 0;
-    border: 0;
+  padding: 0;
+  border: 0;
 }
 
-b, strong {
-	font-weight: bolder;
+b,
+strong {
+  font-weight: bolder;
 }
 
 /* Interface bar
 ---------------------------------------------------------------------- */
 .bar {
-	background-color: $text-color;
-	color: white;
-	height: $mix-bar-height;
-	position: relative;
-	white-space: nowrap;
-	border-radius: 8px 8px 0 0;
-	
-	h3 {
-		font-weight: 500;
-		font-family: "Inconsolata", monospace;
-		line-height: $mix-bar-height;
-		font-size: 0.9em;
-		margin: 0;
-		margin-left: 54px;
-	}
+  background-color: $text-color;
+  color: white;
+  height: $mix-bar-height;
+  position: relative;
+  white-space: nowrap;
+  border-radius: 8px 8px 0 0;
 
-	/** Interface dots */
-	i {
-		width: 10px;
-		height: 10px;
-		border-radius: 50%;
-		position: absolute;
-		top: 7px;
-		left: 7px;
-		background-color: $interface-red;
+  h3 {
+    font-weight: 500;
+    font-family: "Inconsolata", monospace;
+    line-height: $mix-bar-height;
+    font-size: 0.9em;
+    margin: 0;
+    margin-left: 54px;
+  }
 
-		&:before, &:after {
-			content: '';
-			display: inline-block;
-			width: 10px;
-			height: 10px;
-			border-radius: 50%;
-			position: absolute;
-		}
-		&:before {
-			background-color: $interface-yellow;
-			left: 14px;
-		}
-		&:after {
-			background-color: $interface-green;
-			left: 28px;
-		}
-	}
+  /** Interface dots */
+  i {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    background-color: $interface-red;
+
+    &:before,
+    &:after {
+      content: "";
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      position: absolute;
+    }
+    &:before {
+      background-color: $interface-yellow;
+      left: 14px;
+    }
+    &:after {
+      background-color: $interface-green;
+      left: 28px;
+    }
+  }
 }
 
 /* Footer
 ---------------------------------------------------------------------- */
 
 footer {
-	background-color: $text-color;
-	color: white;
-	margin-top: 2rem;
+  background-color: $text-color;
+  color: white;
+  margin-top: 2rem;
 
-	p {
-		margin: 1.25rem 0;
-		float: left;
-	}
+  p {
+    margin: 1.25rem 0;
+    float: left;
+  }
 
-	.social-links {
-		float: right;
-		font-size: 0;
+  .social-links {
+    float: right;
+    font-size: 0;
 
-		a {
-			font-size: 1em;
-			display: inline-block;
-			height: 100%;
-			color: white;
-			text-decoration: none;
+    a {
+      font-size: 1em;
+      display: inline-block;
+      height: 100%;
+      color: white;
+      text-decoration: none;
 
-			i {
-				font-size: 2rem;
-				text-align: center;
-				width: 4rem;
-				height: 4rem;
-				padding: 1rem;
-			}
-		}
-	}
+      i {
+        font-size: 2rem;
+        text-align: center;
+        width: 4rem;
+        height: 4rem;
+        padding: 1rem;
+      }
+    }
+  }
 
-	@include for-tablet-landscape-down {
-		text-align: center;
+  @include for-tablet-landscape-down {
+    text-align: center;
 
-		p {
-			line-height: 1.5;
-		}
+    p {
+      line-height: 1.5;
+    }
 
-		.social-links {
-			float: none;
-		}
-	}
+    .social-links {
+      float: none;
+    }
+  }
 }
 
 .no-touch .social-links i {
-	@include button-hover($brand-primary, white);
+  @include button-hover($brand-primary, white);
 }

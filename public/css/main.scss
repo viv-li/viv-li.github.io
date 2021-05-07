@@ -2,257 +2,249 @@
 @import "variables";
 @import "common";
 
-.content {
-	margin-left: auto;
-	margin-right: auto;
-	@include for-mobile-only {
-		max-width: 420px;
-		padding: 20px;
-	}
-	@include for-tablet-portrait-up {
-		max-width: 660px;
-	}
-	@include for-desktop-up {
-		max-width: 1000px;
-	}
-}
-
 /* Header
 ---------------------------------------------------------------------- */
 h1 {
-	@include for-mobile-only {
-		font-size: 4em;
-	}
-	@include for-tablet-portrait-up {
-		font-size: 7em;
-	}
-	@include for-desktop-up {
-		font-size: 10em;
-	}
+  @include for-mobile-only {
+    font-size: 4em;
+  }
+  @include for-tablet-portrait-up {
+    font-size: 7em;
+  }
+  @include for-desktop-up {
+    font-size: 10em;
+  }
 
-	color: $brand-primary;
-	text-transform: uppercase;
-	margin-top: 0.2em;
-	margin-bottom: 0.4em;
-	font-weight: 400;
-	font-family: "Inconsolata", monospace;
-	white-space: nowrap; // Keeps the content on a single line
+  color: $brand-primary;
+  text-transform: uppercase;
+  margin-top: 0.2em;
+  margin-bottom: 0.4em;
+  font-weight: 400;
+  font-family: "Inconsolata", monospace;
+  white-space: nowrap; // Keeps the content on a single line
 
+  .typing {
+    display: inline-block;
+    vertical-align: top;
+    overflow: hidden; // Ensures the content is not revealed until the animation
+    @include animation(typing 3s steps(9, end));
+  }
 
-	.typing {
-		display: inline-block;
-		vertical-align: top;		overflow: hidden; // Ensures the content is not revealed until the animation
-		@include animation(typing 3s steps(9, end));
-	}
-
-	.cursor {
-		@include animation(blink 1s steps(1) infinite);
-	}
+  .cursor {
+    @include animation(blink 1s steps(1) infinite);
+  }
 }
 
 /* The typing effect */
 @include keyframes(typing) {
-	from { width: 0 }
-  60% { width: 0 }
-  to { width: 4.5em }
+  from {
+    width: 0;
+  }
+  60% {
+    width: 0;
+  }
+  to {
+    width: 4.5em;
+  }
 }
 
 @include keyframes(blink) {
-	from {
-		opacity: 1;
-	}
-	50% {
-		opacity: 0;
-	}
-	to {
-		opacity: 1;
-	}
+  from {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 h2 {
-	@include for-mobile-only {
-		font-size: 1.4em;
-	}
-	@include for-tablet-portrait-up {
-		font-size: 2.1em;
-	}
-	@include for-desktop-up {
-		font-size: 2.8em;
-	}
+  @include for-mobile-only {
+    font-size: 1.4em;
+  }
+  @include for-tablet-portrait-up {
+    font-size: 2.1em;
+  }
+  @include for-desktop-up {
+    font-size: 2.8em;
+  }
 
-	text-transform: lowercase;
-	font-weight: 200;
-	line-height: 1.5;
-	margin: 0;
-	margin-top: 1em;
+  text-transform: lowercase;
+  font-weight: 200;
+  line-height: 1.5;
+  margin: 0;
+  margin-top: 1em;
 }
-
 
 /* Portfolio
 ---------------------------------------------------------------------- */
 #portfolio {
-	padding-top: 1rem;
+  padding-top: 1rem;
 }
 
 .filters {
-	margin-bottom: 1rem;
-	text-align: justify;
+  margin-bottom: 1rem;
+  text-align: justify;
 }
 
 .filter {
-	@include for-mobile-only {
-		font-size: 0.9em;
-	}
-	@include for-tablet-portrait-up {
-		font-size: 0.9em;
-	}
-	@include for-desktop-up {
-		font-size: 1.4em;
-	}
-
-	display: inline-block;
-	font-family: "Epilogue", sans-serif;
-	// font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-	padding: 1rem;
-	background-color: white;
-	border: none;
-	position: relative;
-
   @include for-mobile-only {
-  	width: 100%;
-		margin-bottom: 5px;
+    font-size: 0.9em;
+  }
+  @include for-tablet-portrait-up {
+    font-size: 0.9em;
+  }
+  @include for-desktop-up {
+    font-size: 1.4em;
   }
 
-	&.mixitup-control-active {
-		color: white;
-		background-size: 100% 200%;
-		background-image: linear-gradient(to top, $brand-primary 49.9%, transparent 50%);
-		background-position: bottom;
-		@include transition(background-position 300ms, color 300ms ease);
-	}
+  display: inline-block;
+  font-family: "Epilogue", sans-serif;
+  // font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 1rem;
+  background-color: white;
+  border: none;
+  position: relative;
 
-	&:focus, &:active {
-		outline: none;
-	}
+  @include for-mobile-only {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+
+  &.mixitup-control-active {
+    color: white;
+    background-size: 100% 200%;
+    background-image: linear-gradient(to top, $brand-primary 49.9%, transparent 50%);
+    background-position: bottom;
+    @include transition(background-position 300ms, color 300ms ease);
+  }
+
+  &:focus,
+  &:active {
+    outline: none;
+  }
 }
 
 .no-touch .filter {
-	&:after {
-		content: '';
-		display: inline-block;
-		width: 0;
-		height: 5px;
-		position: absolute;
-		left: 0;
-		bottom: 0;
-		background: $brand-primary;
-		@include transition(width 300ms);
-	}
+  &:after {
+    content: "";
+    display: inline-block;
+    width: 0;
+    height: 5px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: $brand-primary;
+    @include transition(width 300ms);
+  }
 
-	&:hover {
-		cursor: pointer;
-		&:after {
-			width: 100%;
-			@include transition(width 300ms);
-		}
-	}
+  &:hover {
+    cursor: pointer;
+    &:after {
+      width: 100%;
+      @include transition(width 300ms);
+    }
+  }
 }
 
 .justify-row {
-	display: inline-block;
-	width: 100%;
+  display: inline-block;
+  width: 100%;
 }
 
 /* Portfolio grid
 ---------------------------------------------------------------------- */
 #portfolio-mix-grid {
-	text-align: justify;
-	line-height: 0; // stop .gap elements taking up vertical space
+  text-align: justify;
+  line-height: 0; // stop .gap elements taking up vertical space
 
-	@include for-tablet-portrait-up {
-		min-height: 677px;
-	}
-	@include for-desktop-up {
-		min-height: 461px;
-	}
+  @include for-tablet-portrait-up {
+    min-height: 677px;
+  }
+  @include for-desktop-up {
+    min-height: 461px;
+  }
 }
 
-.mix, .gap {
-	display: inline-block;
+.mix,
+.gap {
+  display: inline-block;
   width: 320px;
   @include for-mobile-only {
-  	width: 100%;
+    width: 100%;
   }
 }
 
 .mix {
-	background-color: $interface-gray;
-	line-height: 1.3; // restore normal line height
-	vertical-align: top;
-	margin-bottom: 1.2rem;
-	overflow: hidden;
-	position: relative;
-	border-radius: 8px;
-	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
-	cursor: pointer;
-	@include transition(all 300ms ease);
+  background-color: $interface-gray;
+  line-height: 1.3; // restore normal line height
+  vertical-align: top;
+  margin-bottom: 1.2rem;
+  overflow: hidden;
+  position: relative;
+  border-radius: 8px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  @include transition(all 300ms ease);
 
-	img {
-		display: block;
-		width: 100%;
-	}
+  img {
+    display: block;
+    width: 100%;
+  }
 
-	.overlay {
-		width: 100%;
-		height: 100%;
-		background-color: rgba(0, 0, 0, 0.2);
-		color: white;
-		display: flex;
-		flex-direction: column;
-		position: absolute;
-		top: 100%;
-		@include transition(top 300ms ease);
+  .overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    @include transition(top 300ms ease);
 
-		ul {
-			list-style-type: none;
-			text-align: left;
-			line-height: 1.4;
-			padding: 0 1rem;
-			margin-top: 0.6rem;
-			margin-bottom: 0;
+    ul {
+      list-style-type: none;
+      text-align: left;
+      line-height: 1.4;
+      padding: 0 1rem;
+      margin-top: 0.6rem;
+      margin-bottom: 0;
 
-			li {
-				display: inline-block;
-				font-family: "Inconsolata", monospace;
-				text-transform: uppercase;
-				background-color: $text-color;
-				padding: 0.25rem;
-				line-height: 0.7;
-				white-space: nowrap;
-			}
-		}
+      li {
+        display: inline-block;
+        font-family: "Inconsolata", monospace;
+        text-transform: uppercase;
+        background-color: $text-color;
+        padding: 0.25rem;
+        line-height: 0.7;
+        white-space: nowrap;
+      }
+    }
 
-		p {
-			margin: auto;
-			padding-bottom: $mix-bar-height;
-			text-align: center;
-			
-			.button {
-				padding: 0.75rem;
-			}
-		}
-	}
+    p {
+      margin: auto;
+      padding-bottom: $mix-bar-height;
+      text-align: center;
+
+      .button {
+        padding: 0.75rem;
+      }
+    }
+  }
 }
 
 .no-touch .mix:hover,
 .mix.odd-touch {
-	// .overlay {
-	// 	top: $mix-bar-height;
-	// 	@include transition(top 300ms ease)
-	// }
+  // .overlay {
+  // 	top: $mix-bar-height;
+  // 	@include transition(top 300ms ease)
+  // }
 
-	transform: scale(1.05);
-	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4);
-	opacity: 0.8;
-	@include transition(all 300ms ease);
+  transform: scale(1.05);
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4);
+  opacity: 0.8;
+  @include transition(all 300ms ease);
 }
